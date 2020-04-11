@@ -1,6 +1,14 @@
---------LEC ENCODER--------
-1) Part of the Real-Time EKG monitoring application
+Adaptive Lossless Electrogardiograph Compression Algorithm
+with Decision Regions
+by Palaiologos Efstathios
 
 
+This implementation of the ALEKGC-DRalgorithm is part of an
+already completed and evaluated study. 
+https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
-comming soon
+This version targets to demonstrate the benefits of the 
+modifications that were applied to the basic ALDC algorithm 
+in order to improve its overal performance when compressing
+EKGs
+
