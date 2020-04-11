@@ -1,0 +1,16 @@
+char const in1[] = "samples2/ecgA04apnea.bin";
+char const in2[] = "samples2/ecgB05apnea.bin";
+char const in3[] = "samples2/ecgEkgMove.bin";
+char const in4[] = "samples2/orig_ecgUoP.bin";
+char const in5[] = "samples2/eegchb070707mit.bin";
+char const in6[] = "samples2/eegchb141414mit.bin";
+char const in7[] = "samples2/orig_eegF4UoP.bin";
+char const in8[] = "samples2/orig_eegOZUoP.bin";
+char const out1[] = "cmprsamples2/C_ecgA04apnea.bin";
+char const out2[] = "cmprsamples2/C_ecgB05apnea.bin";
+char const out3[] = "cmprsamples2/C_ecgEkgMove.bin";
+char const out4[] = "cmprsamples2/C_orig_ecgUoP.bin";
+char const out5[] = "cmprsamples2/C_eegchb070707mit.bin";
+char const out6[] = "cmprsamples2/C_eegchb141414mit6.bin";
+char const out7[] = "cmprsamples2/C_orig_eegF4UoP.bin";
+char const out8[] = "cmprsamples2/C_orig_eegOZUoP.bin";
