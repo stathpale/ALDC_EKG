@@ -23,7 +23,7 @@ void lec(FILE* fout, char const huf_opt,
 	//for(size_t i=BUFF_SIZE-1 ;i ;i--)
 	//	printf("%#x buf->data[i];
 	//	printf("
-	f_trnmt(fout,buf);
+	f_trsmt(fout,buf);
 
 }
 
@@ -93,22 +93,17 @@ uint32_t define_n(int16_t d){
 	return n;
 }
 
-void f_trnmt(FILE* fout, cmp_buf* buf){
+void f_trsmt(FILE* fout, cmp_buf* buf){
 	uint32_t* tbufp=&(buf->data[BUFF_SIZE-1]);
 
 	size_t slen=(BCTRMX - buf->b_ctr) / 32;
-	if ((BCTRMX - buf->b_ctr) % 32 > 0) 
-		slen++;
 	
-	while (slen > 1)
-	{
-		
-		//printf("%#X %#X %u \n" , *tbufp , buf->data[BUFF_SIZE-1],buf->b_ctr);
+	while (slen > 0)
+	{		
 		fwrite( tbufp,sizeof(uint32_t),1,fout);
 		slen--; tbufp--; buf->b_ctr += 32;
 	}
 	
-
 	tbuf.data= *tbufp ;
 	tbuf.b_ctr= buf->b_ctr;
 	/*
@@ -124,19 +119,3 @@ void f_trnmt(FILE* fout, cmp_buf* buf){
 	}*/	
 }
 
-/* padding function
-void padding(FILE* fout, cmp_buf* buf ){
-	encode( buf, 4U, 0X000FU);
-	encode( buf, 8U, 0X00FFU);
-
-	fwrite( &buf->data[1],sizeof(uint32_t),1,fout);	
-		//buf->b_ctr-=32;
-	if( (buf->b_ctr) < BCTRMX-32 )		
-		if(!fwrite( &buf->data[0],sizeof(uint32_t),1,fout)){
-			fprintf(stderr, "could not write to file \n");
-			exit(EXIT_FAILURE);
-		}
-	
-}
-
-*/

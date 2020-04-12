@@ -37,6 +37,6 @@ uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
 uint32_t define_n(int16_t d);
 void padding(FILE* fout, cmp_buf* buf );
-void f_trnmt(FILE* fout, cmp_buf* buf);
+void f_trsmt(FILE* fout, cmp_buf* buf);
 
 #endif
