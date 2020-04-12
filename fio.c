@@ -35,12 +35,9 @@ int16_t f_fetch_sample(FILE* fptr){
 	return sample;
 }
 
-size_t buf_n_sum(FILE* fptr,size_t len, int16_t* buf){
-	size_t sum =0;
+void buffering(FILE* fptr,size_t len, int16_t* buf){
 	for( size_t i = 0 ; i<len ;++i){
 		*(buf+i)=f_fetch_sample( fptr);
-		sum+=*(buf+i);
 	}
-	return sum;
 }
 //#endif
