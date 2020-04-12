@@ -2,10 +2,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "fio.h"
+#define BUFF_SIZE 2
+#define ALDC_WND 40
+#define ALEC_WND 10
+
 #ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
 
-#define BUFF_SIZE 2
 
 typedef struct{
 	uint32_t b_ctr;	
@@ -21,11 +24,14 @@ typedef struct{
  
 
 // encoding par
+void alec3(FILE* fout, char const huf_opt,
+		size_t n_samples, cmp_buf* buf, int16_t* inbuf );
 
-int32_t lec (f_io, char const huf_opt, size_t, cmp_buf*);
-int32_t encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
+void lec(FILE* fout, char const huf_opt,
+		size_t n_samples, cmp_buf* buf, int16_t* inbuf );
+void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
-int32_t encode( cmp_buf* buf, uint32_t len, uint16_t dta);
+void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
 uint32_t define_n(int16_t d);
 void padding(FILE* fout, cmp_buf* buf );
 void f_write(FILE* fout, cmp_buf* buf);

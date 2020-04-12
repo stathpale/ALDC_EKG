@@ -89,60 +89,45 @@ static const size_t huf_tbl3b_len[13]= {[ 0]= 4, [ 1]= 3,  [ 2]= 2,
 /**/
 
 
-int32_t lec(f_io fio, char const huf_opt,
-	size_t n_samples, cmp_buf* buf ){
+void lec(FILE* fout, char const huf_opt,
+		size_t n_samples, cmp_buf* buf, int16_t* inbuf ){
 	int16_t r[2]={0};			
 	for (size_t k = 0; k <n_samples; k++){
-		r[1] = f_fetch_sample(fio.in);  	
-		
-		if(encode_init(r[1]-r[0], huf_opt, buf)){
-			fprintf(stderr, "Wrong mode\n");
-			exit(EXIT_FAILURE);
-		}
-		f_write(fio.out,buf);
+		r[1] = *(inbuf+k);  			
+		encode_init(r[1]-r[0], huf_opt, buf);
+		f_write(fout,buf);
 		r[0] = r[1];
 	}
-	return EXIT_SUCCESS;
 }
 
-int32_t encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
+void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
 	uint32_t ni = define_n(di);
 	uint16_t d=two2one_cmpl(di,ni);
-	int32_t ovf_chk = 0;
 	switch(huf_opt){
 		case '1': 
-			ovf_chk=encode( buf, huf_tbl1_len[ni], huf_tbl1[ni]);
+			encode( buf, huf_tbl1_len[ni], huf_tbl1[ni]);
 			break;
 		case '2':
-			ovf_chk=encode( buf, huf_tbl2_len[ni], huf_tbl2[ni]);
+			encode( buf, huf_tbl2_len[ni], huf_tbl2[ni]);
 			break;
 		case '3':
-			ovf_chk=encode( buf, huf_tbl3_len[ni], huf_tbl3[ni]);
+			encode( buf, huf_tbl3_len[ni], huf_tbl3[ni]);
 			break;
 		case '4': 
-			ovf_chk=encode( buf, huf_tbl1b_len[ni], huf_tbl1b[ni]);
+			encode( buf, huf_tbl1b_len[ni], huf_tbl1b[ni]);
 			break;
 		case '5':
-			ovf_chk=encode( buf, huf_tbl2b_len[ni], huf_tbl2b[ni]);
+			encode( buf, huf_tbl2b_len[ni], huf_tbl2b[ni]);
 			break;
 		case '6':
-			ovf_chk=encode( buf, huf_tbl3b_len[ni], huf_tbl3b[ni]);
+			encode( buf, huf_tbl3b_len[ni], huf_tbl3b[ni]);
 			break;
-		default: 	
-			return EXIT_FAILURE;
-	}
-	if(ovf_chk){
-			fprintf(stderr, "huff table overflowed\n");
+		default: 				
+			fprintf(stderr, "INVALID COMPRESION MODE! \n");
 			exit(EXIT_FAILURE);
 	}
-	if(ni)ovf_chk=encode( buf, ni, d);
-	if(ovf_chk){
-			fprintf(stderr, "diff off samples > 12 bits \n");
-			exit(EXIT_FAILURE);
-	}
-	return EXIT_SUCCESS;
-
-
+	
+	if(ni)encode( buf, ni, d);
 }  
 
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
@@ -152,9 +137,11 @@ uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
 		return (uint16_t)dta;
 }
 
-int32_t encode( cmp_buf* buf, uint32_t len, uint16_t dta){	
+void encode( cmp_buf* buf, uint32_t len, uint16_t dta){	
 	if (len>=13){
-		return EXIT_FAILURE;
+			fprintf(stderr, "order of the sample is %u and can't be compressed\n"
+			"12 bits = limit\n",len);
+			exit(EXIT_FAILURE);
 	}	
 	if (len <= (buf->b_ctr % 32) + 1)	{
 		buf->data[buf->b_ctr / 32] |= dta << ((buf->b_ctr % 32) - len + 1);
@@ -167,7 +154,6 @@ int32_t encode( cmp_buf* buf, uint32_t len, uint16_t dta){
 		buf->data[buf->b_ctr / 32] |= dta << ((buf->b_ctr % 32) - len + 1 + nf);
 		buf->b_ctr -= (len - nf);
 	}
-	return EXIT_SUCCESS;
 	
 }
 
@@ -186,9 +172,12 @@ void padding(FILE* fout, cmp_buf* buf ){
 
 	fwrite( &buf->data[1],sizeof(uint32_t),1,fout);	
 		//buf->b_ctr-=32;
-	if( (buf->b_ctr) < (buf->b_max-32) ){		
-		fwrite( &buf->data[0],sizeof(uint32_t),1,fout);	
-	}
+	if( (buf->b_ctr) < (buf->b_max-32) )		
+		if(!fwrite( &buf->data[0],sizeof(uint32_t),1,fout)){
+			fprintf(stderr, "could not write to file \n");
+			exit(EXIT_FAILURE);
+		}
+	
 }
 
 
@@ -200,8 +189,7 @@ void f_write(FILE* fout, cmp_buf* buf){
 		buf->data[(buf->word32size)-1]=buf->data[(buf->word32size)-2];
 		buf->data[(buf->word32size)-2]=0;
 		buf->b_ctr+=32;
-	}
-	
+	}	
 }
 
 

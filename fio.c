@@ -2,7 +2,7 @@
 //#ifndef __FIO_H__
 //#define __FIO_H__
 
-f_io f_open(f_io files ){
+f_io f_open(f_io files,int16_t** inbufp ){
 	files.in = fopen( files.in_id , files.in_mode);
 	files.out= fopen( files.out_id, files.out_mode);
 	if ((!files.in)||(!files.out)){
@@ -10,6 +10,8 @@ f_io f_open(f_io files ){
 		exit(EXIT_FAILURE);
 	}
 	files.nsamples = f_get_len(files.in);
+	*inbufp= malloc(sizeof(int16_t)*files.nsamples);
+	buffering(files.in,files.nsamples, *inbufp);
 	return files;	
 }
 
@@ -28,7 +30,7 @@ size_t f_get_len(FILE* fptr){
 
 int16_t f_fetch_sample(FILE* fptr){
 	int16_t sample;
-	if(fread(&sample, sizeof(int16_t), 1, fptr)== 0){
+	if(!fread(&sample, sizeof(int16_t), 1, fptr)){
 		fprintf(stderr, "Unable to fetch sample from file");
 		exit(EXIT_FAILURE);
 	}

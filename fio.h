@@ -16,7 +16,6 @@ typedef struct{
 }f_io;
 
 
-
 /**
  ** @name File Input and Output
  ** @{
@@ -35,7 +34,7 @@ typedef struct{
  ** Each @a f_io type struct that opens with f_open must be 
  ** closed with f_close.
  **/
-f_io f_open(f_io files);
+f_io f_open(f_io files,int16_t**);
 
 void f_close(f_io files);
 
