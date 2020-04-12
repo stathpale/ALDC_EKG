@@ -17,13 +17,16 @@
 
 int main ( int argc, char* argv[argc+1]){
 	/* INITIALIZATION*/
-	cmp_buf stream={.b_ctr=BUFF_SIZE*32-1, .data={0U},};
-	f_io fio = {.in_id=in7, .out_id=out7,
-				.in_mode="rb", .out_mode="wb"};	
+	f_io fio = {.in_id=in1, .out_id=out1,
+				.in_mode="rb", .out_mode="wb"};
+				
 	int16_t* inbuf=0;
-	fio=f_open(fio,&inbuf);                             //get FILE I/O pointers
+	
+	fio=f_open(fio,&inbuf); 
+	//get FILE I/O pointers
+	
 	for ( size_t i = 0 ; i<fio.nsamples; i+=ALEC_WND ){
-		lec(fio.out, '1',i, &stream,inbuf );
+		lec(fio.out, i, inbuf);
 	}
 	//padding(fio.out, &stream);
 	//printf("%u\n",BCTRMX/32);

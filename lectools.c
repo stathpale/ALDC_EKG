@@ -4,26 +4,28 @@
 /**/
 
 static int16_t r[2]={0};			
-static t_buf tbuf={.b_ctr=BCTRMX, .data=0};
+static t_buf tbuf={.b_ctr=BCTRMX, .data=0U};
+static cmp_buf strm1={.b_ctr=BCTRMX, .data={0U},};
+static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
+static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
-void lec(FILE* fout, char const huf_opt,
-		 size_t offset,cmp_buf* buf, int16_t* inbuf ){
+//void alec2( FILE* fout,char const huf_opts[static 3], 
+			//size_t offset, cmp_buf 
+
+void lec(FILE* fout, size_t offset, int16_t* inbuf ){
 			 
-	for(size_t i=0;i<BUFF_SIZE ;i++) buf->data[i]=0;
-	buf->data[BUFF_SIZE-1]= tbuf.data;
-	buf->b_ctr = tbuf.b_ctr;
+	for(size_t i=0;i<BUFF_SIZE ;i++) strm1.data[i]=0;
+	strm1.data[BUFF_SIZE-1]= tbuf.data;
+	strm1.b_ctr = tbuf.b_ctr;
 	
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		r[1] = *(inbuf+k+offset);  			
-		encode_init(r[1]-r[0], huf_opt, buf);
-		r[0] = r[1];
-		//printf("inside lec %zu , %zu\n",k+offset,k);
+		encode_init(r[1]-r[0], LECOPT, &strm1);
+		r[0] = r[1];		
 	}
-	//for(size_t i=BUFF_SIZE-1 ;i ;i--)
-	//	printf("%#x buf->data[i];
-	//	printf("
-	f_trsmt(fout,buf);
+	
+	f_trsmt(fout,&strm1);
 
 }
 
@@ -98,24 +100,12 @@ void f_trsmt(FILE* fout, cmp_buf* buf){
 
 	size_t slen=(BCTRMX - buf->b_ctr) / 32;
 	
-	while (slen > 0)
-	{		
+	while (slen > 0){		
 		fwrite( tbufp,sizeof(uint32_t),1,fout);
 		slen--; tbufp--; buf->b_ctr += 32;
 	}
 	
 	tbuf.data= *tbufp ;
-	tbuf.b_ctr= buf->b_ctr;
-	/*
-	if(buf->b_ctr< BCTRMX-32){		
-		uint32_t temp=buf->data[BCTRMX/32];
-		if(!fwrite( &temp,sizeof(uint32_t),1,fout)){
-			fprintf(stderr, "could not write to file \n");
-			exit(EXIT_FAILURE);
-		}
-		buf->data[BUFF_SIZE-1]=buf->data[BUFF_SIZE-2];
-		buf->data[BUFF_SIZE-2]=0;
-		buf->b_ctr+=32;
-	}*/	
+	tbuf.b_ctr= buf->b_ctr;	
 }
 

@@ -2,10 +2,21 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "fio.h"
-#define BUFF_SIZE 10
-#define BCTRMX (BUFF_SIZE*32-1)
+
 #define ALDC_WND 40
 #define ALEC_WND 10
+
+#define LECOPT  '1'
+#define AL3OPT1 '1'
+#define AL3OPT2 '2'
+#define AL3OPT3 '3'
+#define AL2OPT1 '1'
+#define AL2OPT2 '2'
+
+
+
+#define BUFF_SIZE ALEC_WND
+#define BCTRMX (BUFF_SIZE*32-1)
 
 #ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
@@ -30,8 +41,7 @@ typedef struct{
 void alec3(FILE* fout, char const huf_opt,
 		size_t n_samples, cmp_buf* buf, int16_t* inbuf );
 
-void lec(FILE* fout, char const huf_opt,
-		size_t offset, cmp_buf* buf, int16_t* inbuf );
+void lec(FILE* fout, size_t offset, int16_t* inbuf );
 void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
