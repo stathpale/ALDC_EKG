@@ -10,6 +10,10 @@ static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
+void aldc (FILE* fout, size_t offset, int16_t* inbuf){
+	
+}
+
 void lec_init(bool first){
 	for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
 	strm1.data[BUFF_SIZE-1]= tbuf.data;
@@ -31,14 +35,13 @@ void al2_init(bool first){
 	
 	if(first){}
 
-	//writing their unique prefix codes	in case they are chosen as the best option
-	
-	//writing 1 to buffer 2	
-	strm2.data[strm2.b_ctr / 32] |= 1 << strm2.b_ctr % 32; 
-	strm2.b_ctr -- ;
-	// 0 to buffer 1
-	strm1.b_ctr-- ;
-	
+	//writing their unique prefix codes	in case they are chosen as the best option	
+	//writing 1 to buffer 2		
+	encode(&strm2,AL2OP1_CD_LN, AL2OP1_CD);
+
+	// 0 to buffer 1	
+	encode(&strm1,AL2OP2_CD_LN, AL2OP2_CD);
+
 }
 
 
@@ -59,17 +62,16 @@ void al3_init(bool first){
 	if(first){}
 
 	//writing their unique prefix codes	in case they are chosen as the best option
-	//writing 10 to buffer 1
-	strm1.data[strm1.b_ctr / 32] |= 1 << strm1.b_ctr % 32; 
-	strm1.b_ctr -= 2;	
-	//writing 11 to buffer 2
-	strm2.data[strm2.b_ctr / 32] |= 1 << strm2.b_ctr % 32; 
-	strm2.b_ctr -- ;
-	strm2.data[strm2.b_ctr / 32] |= 1 << strm2.b_ctr % 32; 
-	strm2.b_ctr -- ;
-	// 0 to buffer 3
-	strm3.b_ctr-- ;
 	
+	//writing 10 to buffer 1
+	encode(&strm1,AL3OP1_CD_LN, AL3OP1_CD);	
+	
+	//writing 11 to buffer 2
+	encode(&strm2,AL3OP2_CD_LN, AL3OP2_CD);
+	
+	// 0 to buffer 3	
+	encode(&strm3,AL3OP3_CD_LN, AL3OP3_CD);
+
 }
 
 
@@ -169,7 +171,7 @@ uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta){	
 	if (len>=13){
 			fprintf(stderr, "order of the sample is %u and can't be compressed\n"
-			"12 bits = limit\n",len);
+			"limit = 12 bits\n",len);
 			exit(EXIT_FAILURE);
 	}	
 	if (len <= (buf->b_ctr % 32) + 1)	{
