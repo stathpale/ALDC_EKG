@@ -39,6 +39,7 @@ typedef struct{
 
 // encoding par
 void alec3(FILE* fout, size_t offset, int16_t* inbuf );
+void alec2(FILE* fout, size_t offset, int16_t* inbuf );
 void lec(FILE* fout, size_t offset, int16_t* inbuf );
 void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
