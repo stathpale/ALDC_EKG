@@ -38,15 +38,13 @@ typedef struct{
  
 
 // encoding par
-void alec3(FILE* fout, char const huf_opt,
-		size_t n_samples, cmp_buf* buf, int16_t* inbuf );
-
+void alec3(FILE* fout, size_t offset, int16_t* inbuf );
 void lec(FILE* fout, size_t offset, int16_t* inbuf );
 void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
 uint32_t define_n(int16_t d);
-void padding(FILE* fout, cmp_buf* buf );
-void f_trsmt(FILE* fout, cmp_buf* buf);
+void padding(FILE* fout, cmp_buf buf );
+void f_trsmt(FILE* fout, cmp_buf buf);
 
 #endif

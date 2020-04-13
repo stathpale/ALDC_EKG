@@ -25,7 +25,7 @@ void lec(FILE* fout, size_t offset, int16_t* inbuf ){
 		r[0] = r[1];		
 	}
 	
-	f_trsmt(fout,&strm1);
+	f_trsmt(fout,strm1);
 
 }
 
@@ -36,21 +36,21 @@ void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
 		case '1': 
 			encode( buf, huf_tbl1_len[ni], huf_tbl1[ni]);
 			break;
-		case '2':
-			encode( buf, huf_tbl2_len[ni], huf_tbl2[ni]);
+		/*case '2':
+			encode(  &buf, huf_tbl2_len[ni], huf_tbl2[ni]);
 			break;
 		case '3':
-			encode( buf, huf_tbl3_len[ni], huf_tbl3[ni]);
+			encode( &buf, huf_tbl3_len[ni], huf_tbl3[ni]);
 			break;
 		case '4': 
-			encode( buf, huf_tbl1b_len[ni], huf_tbl1b[ni]);
+			encode(  &buf, huf_tbl1b_len[ni], huf_tbl1b[ni]);
 			break;
 		case '5':
-			encode( buf, huf_tbl2b_len[ni], huf_tbl2b[ni]);
+			encode(  &buf, huf_tbl2b_len[ni], huf_tbl2b[ni]);
 			break;
 		case '6':
-			encode( buf, huf_tbl3b_len[ni], huf_tbl3b[ni]);
-			break;
+			encode(  &buf, huf_tbl3b_len[ni], huf_tbl3b[ni]);
+			break;*/
 		default: 				
 			fprintf(stderr, "INVALID COMPRESION MODE! \n");
 			exit(EXIT_FAILURE);
@@ -95,17 +95,17 @@ uint32_t define_n(int16_t d){
 	return n;
 }
 
-void f_trsmt(FILE* fout, cmp_buf* buf){
-	uint32_t* tbufp=&(buf->data[BUFF_SIZE-1]);
+void f_trsmt(FILE* fout, cmp_buf buf){
+	uint32_t* tbufp=&(buf.data[BUFF_SIZE-1]);
 
-	size_t slen=(BCTRMX - buf->b_ctr) / 32;
+	size_t slen=(BCTRMX - buf.b_ctr) / 32;
 	
 	while (slen > 0){		
 		fwrite( tbufp,sizeof(uint32_t),1,fout);
-		slen--; tbufp--; buf->b_ctr += 32;
+		slen--; tbufp--; buf.b_ctr += 32;
 	}
 	
 	tbuf.data= *tbufp ;
-	tbuf.b_ctr= buf->b_ctr;	
+	tbuf.b_ctr= buf.b_ctr;
 }
 
