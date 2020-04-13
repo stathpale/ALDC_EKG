@@ -17,8 +17,8 @@
 
 int main ( int argc, char* argv[argc+1]){
 	/* INITIALIZATION*/
-	f_io fio = {.in_id=in8    ,
-				.out_id=out8  ,
+	f_io fio = {.in_id=in8   ,
+			  .out_id=out8  ,
 				.in_mode="rb ",
 				.out_mode="wb"};
 				
@@ -28,8 +28,9 @@ int main ( int argc, char* argv[argc+1]){
 	//get FILE I/O pointers
 	
 	for ( size_t i = 0 ; i<fio.nsamples; i+=ALEC_WND ){
-		alec2(fio.out, i, inbuf);
+		lec(fio.out, i, inbuf);
 	}
+	
 	//padding(fio.out, &stream);
 	//printf("%u\n",BCTRMX/32);
 	f_close(fio);

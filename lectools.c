@@ -10,10 +10,41 @@ static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
-void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
-	//initialising 
-	//emptying the buffers
-	for(size_t i=0;i<BUFF_SIZE ;i++) {
+void lec_init(bool first){
+	for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
+	strm1.data[BUFF_SIZE-1]= tbuf.data;
+	strm1.b_ctr = tbuf.b_ctr;
+	if(first){}
+
+}
+
+
+void al2_init(bool first){
+	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
+		strm1.data[i]=0;
+		strm2.data[i]=0;
+	}
+	strm1.data[BUFF_SIZE-1]= tbuf.data;
+	strm2.data[BUFF_SIZE-1]= tbuf.data;
+	strm1.b_ctr = tbuf.b_ctr;
+	strm2.b_ctr = tbuf.b_ctr;
+	
+	if(first){}
+
+	//writing their unique prefix codes	in case they are chosen as the best option
+	
+	//writing 1 to buffer 2	
+	strm2.data[strm2.b_ctr / 32] |= 1 << strm2.b_ctr % 32; 
+	strm2.b_ctr -- ;
+	// 0 to buffer 1
+	strm1.b_ctr-- ;
+	
+}
+
+
+void al3_init(bool first){
+	
+	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
 		strm1.data[i]=0;
 		strm2.data[i]=0;
 		strm3.data[i]=0;
@@ -25,6 +56,8 @@ void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
 	strm2.b_ctr = tbuf.b_ctr;
 	strm3.b_ctr = tbuf.b_ctr;
 	
+	if(first){}
+
 	//writing their unique prefix codes	in case they are chosen as the best option
 	//writing 10 to buffer 1
 	strm1.data[strm1.b_ctr / 32] |= 1 << strm1.b_ctr % 32; 
@@ -37,6 +70,12 @@ void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
 	// 0 to buffer 3
 	strm3.b_ctr-- ;
 	
+}
+
+
+void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
+	
+	al3_init(0);
 	//writing start the compression 
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		r[1] = *(inbuf+k+offset);  			
@@ -57,24 +96,10 @@ void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
 	}
 
 }
+
 void alec2(FILE* fout, size_t offset, int16_t* inbuf ){
-	for(size_t i=0;i<BUFF_SIZE ;i++) {
-		strm1.data[i]=0;
-		strm2.data[i]=0;
-	}
-	strm1.data[BUFF_SIZE-1]= tbuf.data;
-	strm2.data[BUFF_SIZE-1]= tbuf.data;
-	strm1.b_ctr = tbuf.b_ctr;
-	strm2.b_ctr = tbuf.b_ctr;
 	
-	//writing their unique prefix codes	in case they are chosen as the best option
-	
-	//writing 1 to buffer 2	
-	strm2.data[strm2.b_ctr / 32] |= 1 << strm2.b_ctr % 32; 
-	strm2.b_ctr -- ;
-	// 0 to buffer 1
-	strm1.b_ctr-- ;
-	
+	al2_init(0);
 	//writing start the compression 
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		r[1] = *(inbuf+k+offset);  			
@@ -83,7 +108,7 @@ void alec2(FILE* fout, size_t offset, int16_t* inbuf ){
 		r[0] = r[1];		
 	}
 	
-	if (strm1.b_ctr >= strm2.b_ctr )	{
+	if (strm1.b_ctr >= strm2.b_ctr ){
 		f_trsmt(fout,strm1);
 	}	else	{
 		f_trsmt(fout,strm2);
@@ -92,11 +117,8 @@ void alec2(FILE* fout, size_t offset, int16_t* inbuf ){
 }
 
 void lec(FILE* fout, size_t offset, int16_t* inbuf ){
-			 
-	for(size_t i=0;i<BUFF_SIZE ;i++) strm1.data[i]=0;
-	strm1.data[BUFF_SIZE-1]= tbuf.data;
-	strm1.b_ctr = tbuf.b_ctr;
 	
+	lec_init(0);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		r[1] = *(inbuf+k+offset);  			
 		encode_init(r[1]-r[0], LECOPT, &strm1);
@@ -188,3 +210,17 @@ void f_trsmt(FILE* fout, cmp_buf buf){
 	tbuf.b_ctr= buf.b_ctr;
 }
 
+/* padding function
+void padding(FILE* fout, cmp_buf* buf ){
+	encode( buf, 4U, 0X000FU);
+	encode( buf, 8U, 0X00FFU);
+	fwrite( &buf->data[1],sizeof(uint32_t),1,fout);	
+		//buf->b_ctr-=32;
+	if( (buf->b_ctr) < (buf->b_max-32) )		
+	if( (buf->b_ctr) < BCTRMX-32 )		
+		if(!fwrite( &buf->data[0],sizeof(uint32_t),1,fout)){
+			fprintf(stderr, "could not write to file \n");
+			exit(EXIT_FAILURE);
+		}
+	
+}*/

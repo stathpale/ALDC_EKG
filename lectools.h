@@ -2,16 +2,17 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "fio.h"
+#include <stdbool.h>
 
 #define ALDC_WND 40
 #define ALEC_WND 10
 
 #define LECOPT  '1'
-#define AL3OPT1 '1'
-#define AL3OPT2 '2'
-#define AL3OPT3 '3'
-#define AL2OPT1 '1'
-#define AL2OPT2 '2'
+#define AL3OPT1 '4'
+#define AL3OPT2 '5'
+#define AL3OPT3 '6'
+#define AL2OPT1 '4'
+#define AL2OPT2 '5'
 
 
 
@@ -41,6 +42,9 @@ typedef struct{
 void alec3(FILE* fout, size_t offset, int16_t* inbuf );
 void alec2(FILE* fout, size_t offset, int16_t* inbuf );
 void lec(FILE* fout, size_t offset, int16_t* inbuf );
+void al3_init(bool first);
+void al2_init(bool first);
+void lec_init(bool first);
 void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
