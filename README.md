@@ -1,7 +1,8 @@
-Adaptive Lossless Electrogardiograph Compression Algorithm
+Adaptive Lossless Electrogardiogram Compression Algorithm
 with Decision Regions
 by Palaiologos Efstathios
 
+C implementation
 
 This implementation of the ALEKGC-DRalgorithm is part of an
 already completed and evaluated study. 
