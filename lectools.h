@@ -7,9 +7,9 @@
 **  Each option corresponds to a different huffman table
 */
 #define LECOPT  '1'
-#define AL3OPT1 '4'
-#define AL3OPT2 '5'
-#define AL3OPT3 '6'
+#define AL3OPT1 '1'
+#define AL3OPT2 '2'
+#define AL3OPT3 '3'
 #define AL2OPT1 '4'
 #define AL2OPT2 '5'
 
@@ -31,8 +31,8 @@
 /* Unrelated with ALxOPT / LECOPT 
 ** Sets the unique prefix code to the compressed bit stream
 */
-#define ALDCOP1_CD 0X1U
-#define ALDCOP2_CD 0X0U
+#define ALDCOP1_CD 0X0U
+#define ALDCOP2_CD 0X1U
 #define ALDCOP1_CD_LN 1U
 #define ALDCOP2_CD_LN 1U
 
@@ -50,7 +50,8 @@
 #ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
 
-typedef void compressor(FILE* , size_t ,int16_t* );
+typedef void compressor(FILE* ,int16_t* );
+typedef void compressor_init( bool);
 
 typedef struct{
 	uint32_t b_ctr;	
@@ -70,10 +71,11 @@ typedef struct{
 
 // encoding par
 
-void aldc (FILE* fout, size_t offset, int16_t* inbuf);
-void alec3(FILE* fout, size_t offset, int16_t* inbuf );
-void alec2(FILE* fout, size_t offset, int16_t* inbuf );
-void lec(FILE* fout, size_t offset, int16_t* inbuf );
+uint32_t get_buf_sum(int16_t* inbuf);
+void aldc (FILE* fout, int16_t* inbuf);
+void alec3(FILE* fout, int16_t* inbuf,bool ft );
+void alec2(FILE* fout, int16_t* inbuf,bool ft );
+void lec(FILE* fout, int16_t* inbuf, bool ft );
 void al3_init(bool first);
 void al2_init(bool first);
 void lec_init(bool first);

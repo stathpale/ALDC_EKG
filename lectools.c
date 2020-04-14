@@ -10,26 +10,37 @@ static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
-
 void lec_init(bool first){
-	for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
-	strm1.data[BUFF_SIZE-1]= tbuf.data;
-	strm1.b_ctr = tbuf.b_ctr;
-	if(first){}
+	//static bool prev = 0;
 
+	//if(!prev){
+		for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
+		strm1.data[BUFF_SIZE-1]= tbuf.data;
+		strm1.b_ctr = tbuf.b_ctr;
+	//}
+	if(first){
+		encode(&strm1,ALDCOP1_CD_LN, ALDCOP1_CD);
+	} 
+	//prev=first;
 }
 
 void al2_init(bool first){
-	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
-		strm1.data[i]=0;
-		strm2.data[i]=0;
+	//static bool prev = 0;
+
+	//if(!prev){
+		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
+			strm1.data[i]=0;
+			strm2.data[i]=0;
+		}
+		strm1.data[BUFF_SIZE-1]= tbuf.data;
+		strm2.data[BUFF_SIZE-1]= tbuf.data;
+		strm1.b_ctr = tbuf.b_ctr;
+		strm2.b_ctr = tbuf.b_ctr;
+	//}
+	if(first){
+		encode(&strm2,ALDCOP1_CD_LN, ALDCOP1_CD);
+		encode(&strm1,ALDCOP1_CD_LN, ALDCOP1_CD);
 	}
-	strm1.data[BUFF_SIZE-1]= tbuf.data;
-	strm2.data[BUFF_SIZE-1]= tbuf.data;
-	strm1.b_ctr = tbuf.b_ctr;
-	strm2.b_ctr = tbuf.b_ctr;
-	
-	if(first){}
 
 	//writing their unique prefix codes	in case they are chosen as the best option	
 	//writing 1 to buffer 2		
@@ -37,24 +48,33 @@ void al2_init(bool first){
 
 	// 0 to buffer 1	
 	encode(&strm1,AL2OP2_CD_LN, AL2OP2_CD);
-
+	//prev= first;
 }
 
 void al3_init(bool first){
 	
-	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
-		strm1.data[i]=0;
-		strm2.data[i]=0;
-		strm3.data[i]=0;
+	//static bool prev = 0;
+
+	//if(!prev){
+		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
+			strm1.data[i]=0;
+			strm2.data[i]=0;
+			strm3.data[i]=0;
+		}
+		strm1.data[BUFF_SIZE-1]= tbuf.data;
+		strm2.data[BUFF_SIZE-1]= tbuf.data;
+		strm3.data[BUFF_SIZE-1]= tbuf.data;
+		strm1.b_ctr = tbuf.b_ctr;
+		strm2.b_ctr = tbuf.b_ctr;
+		strm3.b_ctr = tbuf.b_ctr;
+	//}
+	if(first){
+		encode(&strm1,ALDCOP2_CD_LN, ALDCOP2_CD);
+		encode(&strm2,ALDCOP2_CD_LN, ALDCOP2_CD);
+		encode(&strm3,ALDCOP2_CD_LN, ALDCOP2_CD);
+
+
 	}
-	strm1.data[BUFF_SIZE-1]= tbuf.data;
-	strm2.data[BUFF_SIZE-1]= tbuf.data;
-	strm3.data[BUFF_SIZE-1]= tbuf.data;
-	strm1.b_ctr = tbuf.b_ctr;
-	strm2.b_ctr = tbuf.b_ctr;
-	strm3.b_ctr = tbuf.b_ctr;
-	
-	if(first){}
 
 	//writing their unique prefix codes	in case they are chosen as the best option
 	
@@ -66,87 +86,78 @@ void al3_init(bool first){
 	
 	// 0 to buffer 3	
 	encode(&strm3,AL3OP3_CD_LN, AL3OP3_CD);
-
+	//prev=first;
 }
 
-float sumf(int16_t* inbuf, size_t offset )
-{	
-	float sum = 0;
-	/*
-	float tempd;
-	for (unsigned int k = 0; k < ALEC_BLOCK_SIZE*ALDC_COEF;k++)
-	{
-		if (gi == 0 && k == 0)tempd = atd_data[gi + k];
-		else tempd = atd_data[gi + k] - atd_data[gi + k - 1];
-		if( tempd< 0 ) sum +=tempd * (-1);
-		else sum += tempd;		
-	}
-	*/
+uint32_t get_buf_sum(int16_t* inbuf){
+//do it with recursion latter	
+	uint32_t sum = 0U;
+	for(size_t i = 0 ; i<ALDC_WND ; i++)
+		sum+= abs(*(inbuf+i));
+	
 	return sum;
 }
 
-void aldc (FILE* fout, size_t offset, int16_t* inbuf){
-	compressor* cmprf[]={[0]=lec, [1]=alec3};
+void aldc (FILE* fout, int16_t* inbuf){
+	//compressor* cmprf[]={[0]=alec3, [1]=lec};
+	//compressor_init* initf[]={[0]=al3_init, [1]=lec_init};
+	uint32_t buf_sum = 10*get_buf_sum(inbuf);
+	//printf("%u\n", buf_sum/10);
+	//if(buf_sum <= 25*ALDC_WND)
+	//	lec_init(1); 
+	//else
+	//	al3_init(1);
+	for(size_t j = 0 ; j< ALDC_WND ; j+=ALEC_WND){
+		if(buf_sum <= 25*ALDC_WND){
+			lec(fout, inbuf+j,!j);
+		} else {
+			alec3(fout, inbuf+j,!j);			
+		}
+		//printf("%u\n",!f);
+			//alec3(fout, inbuf+j);
+		//initf[buf_sum <= 25*ALDC_WND](!j);
+		//cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j);
 
-	//for ( size_t i = 0 ; i<fio.nsamples; i+=ALEC_WND ){
-	//	cmprf[1](fout, offset, inbuf);
-	//}
+	}
+		//cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j);
+	
 }
 
-void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
-	
-	al3_init(0);
-	//writing start the compression 
+void alec3(FILE* fout, int16_t* inbuf, bool ft ){	
+	al3_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
-		//r[1] = *(inbuf+k+offset);  			
-		encode_init(*(inbuf+k+offset), AL3OPT1, &strm1);
-		encode_init(*(inbuf+k+offset), AL3OPT2, &strm2);
-		encode_init(*(inbuf+k+offset), AL3OPT3, &strm3);
-		//r[0] = r[1];		
+		encode_init(*(inbuf+k), AL3OPT1, &strm1);
+		encode_init(*(inbuf+k), AL3OPT2, &strm2);
+		encode_init(*(inbuf+k), AL3OPT3, &strm3);
 	}
 	if (strm1.b_ctr >= strm2.b_ctr && strm1.b_ctr >= (strm3.b_ctr - 1))	{
 		f_trsmt(fout,strm1);
-	}
-
-	else if (strm2.b_ctr > strm1.b_ctr && strm2.b_ctr >= (strm3.b_ctr - 1))	{
+	} else if (strm2.b_ctr > strm1.b_ctr && strm2.b_ctr >= (strm3.b_ctr - 1))	{
 		f_trsmt(fout,strm2);
-	}
-	else{
+	} else {
 		f_trsmt(fout,strm3);
 	}
-
 }
 
-void alec2(FILE* fout, size_t offset, int16_t* inbuf ){
-	
-	al2_init(0);
-	//writing start the compression 
-	for (size_t k = 0 ; k <ALEC_WND; k++){
-		//r[1] = *(inbuf+k+offset);  			
-		encode_init(*(inbuf+k+offset), AL2OPT1, &strm1);
-		encode_init(*(inbuf+k+offset), AL2OPT2, &strm2);
-		//r[0] = r[1];		
-	}
-	
+void alec2(FILE* fout, int16_t* inbuf,bool ft ){	
+	al2_init(ft);
+	for (size_t k = 0 ; k <ALEC_WND; k++){ 			
+		encode_init(*(inbuf+k), AL2OPT1, &strm1);
+		encode_init(*(inbuf+k), AL2OPT2, &strm2);
+	}	
 	if (strm1.b_ctr >= strm2.b_ctr ){
 		f_trsmt(fout,strm1);
-	}	else	{
+	} else {
 		f_trsmt(fout,strm2);
-	}
-	
+	}	
 }
 
-void lec(FILE* fout, size_t offset, int16_t* inbuf ){
-	
-	lec_init(0);
-	for (size_t k = 0 ; k <ALEC_WND; k++){
-		//r[1] = *(inbuf+k+offset);  			
-		encode_init( *(inbuf+k+offset), LECOPT, &strm1);
-		//r[0] = r[1];		
-	}
-	
+void lec(FILE* fout, int16_t* inbuf, bool ft ){	
+	lec_init(ft);
+	for (size_t k = 0 ; k <ALEC_WND; k++){				
+		encode_init( *(inbuf+k), LECOPT, &strm1);
+	}	
 	f_trsmt(fout,strm1);
-
 }
 
 void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
