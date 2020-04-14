@@ -11,7 +11,7 @@ f_io f_open(f_io files,int16_t** inbufp ){
 	}
 	files.nsamples = f_get_len(files.in);
 	*inbufp= malloc(sizeof(int16_t)*files.nsamples);
-	buffering(files.in,files.nsamples, *inbufp);
+	bufndif(files.in,files.nsamples, *inbufp);
 	return files;	
 }
 
@@ -37,9 +37,13 @@ int16_t f_fetch_sample(FILE* fptr){
 	return sample;
 }
 
-void buffering(FILE* fptr,size_t len, int16_t* buf){
+void bufndif(FILE* fptr,size_t len, int16_t* buf){
+	int16_t prev=0;
+	int16_t temp;
 	for( size_t i = 0 ; i<len ;++i){
-		*(buf+i)=f_fetch_sample( fptr);
+		temp=f_fetch_sample( fptr);
+		*(buf+i)=temp-prev;
+		prev=temp;
 	}
 }
 //#endif

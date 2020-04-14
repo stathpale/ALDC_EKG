@@ -42,5 +42,5 @@ size_t f_get_len(FILE* fptr);
 
 int16_t f_fetch_sample(FILE* fptr);
 
-void buffering(FILE* fptr,size_t len, int16_t* buf);
+void bufndif(FILE* fptr,size_t len, int16_t* buf);
 #endif

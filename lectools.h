@@ -50,6 +50,7 @@
 #ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
 
+typedef void compressor(FILE* , size_t ,int16_t* );
 
 typedef struct{
 	uint32_t b_ctr;	

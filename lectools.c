@@ -3,16 +3,13 @@
 
 /**/
 
-static int16_t r[2]={0};			
+//static int16_t r[2]={0};			
 static t_buf tbuf={.b_ctr=BCTRMX, .data=0U};
 static cmp_buf strm1={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
-void aldc (FILE* fout, size_t offset, int16_t* inbuf){
-	
-}
 
 void lec_init(bool first){
 	for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
@@ -21,7 +18,6 @@ void lec_init(bool first){
 	if(first){}
 
 }
-
 
 void al2_init(bool first){
 	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
@@ -43,7 +39,6 @@ void al2_init(bool first){
 	encode(&strm1,AL2OP2_CD_LN, AL2OP2_CD);
 
 }
-
 
 void al3_init(bool first){
 	
@@ -74,17 +69,40 @@ void al3_init(bool first){
 
 }
 
+float sumf(int16_t* inbuf, size_t offset )
+{	
+	float sum = 0;
+	/*
+	float tempd;
+	for (unsigned int k = 0; k < ALEC_BLOCK_SIZE*ALDC_COEF;k++)
+	{
+		if (gi == 0 && k == 0)tempd = atd_data[gi + k];
+		else tempd = atd_data[gi + k] - atd_data[gi + k - 1];
+		if( tempd< 0 ) sum +=tempd * (-1);
+		else sum += tempd;		
+	}
+	*/
+	return sum;
+}
+
+void aldc (FILE* fout, size_t offset, int16_t* inbuf){
+	compressor* cmprf[]={[0]=lec, [1]=alec3};
+
+	//for ( size_t i = 0 ; i<fio.nsamples; i+=ALEC_WND ){
+	//	cmprf[1](fout, offset, inbuf);
+	//}
+}
 
 void alec3(FILE* fout, size_t offset, int16_t* inbuf ){
 	
 	al3_init(0);
 	//writing start the compression 
 	for (size_t k = 0 ; k <ALEC_WND; k++){
-		r[1] = *(inbuf+k+offset);  			
-		encode_init(r[1]-r[0], AL3OPT1, &strm1);
-		encode_init(r[1]-r[0], AL3OPT2, &strm2);
-		encode_init(r[1]-r[0], AL3OPT3, &strm3);
-		r[0] = r[1];		
+		//r[1] = *(inbuf+k+offset);  			
+		encode_init(*(inbuf+k+offset), AL3OPT1, &strm1);
+		encode_init(*(inbuf+k+offset), AL3OPT2, &strm2);
+		encode_init(*(inbuf+k+offset), AL3OPT3, &strm3);
+		//r[0] = r[1];		
 	}
 	if (strm1.b_ctr >= strm2.b_ctr && strm1.b_ctr >= (strm3.b_ctr - 1))	{
 		f_trsmt(fout,strm1);
@@ -104,10 +122,10 @@ void alec2(FILE* fout, size_t offset, int16_t* inbuf ){
 	al2_init(0);
 	//writing start the compression 
 	for (size_t k = 0 ; k <ALEC_WND; k++){
-		r[1] = *(inbuf+k+offset);  			
-		encode_init(r[1]-r[0], AL2OPT1, &strm1);
-		encode_init(r[1]-r[0], AL2OPT2, &strm2);
-		r[0] = r[1];		
+		//r[1] = *(inbuf+k+offset);  			
+		encode_init(*(inbuf+k+offset), AL2OPT1, &strm1);
+		encode_init(*(inbuf+k+offset), AL2OPT2, &strm2);
+		//r[0] = r[1];		
 	}
 	
 	if (strm1.b_ctr >= strm2.b_ctr ){
@@ -122,9 +140,9 @@ void lec(FILE* fout, size_t offset, int16_t* inbuf ){
 	
 	lec_init(0);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
-		r[1] = *(inbuf+k+offset);  			
-		encode_init(r[1]-r[0], LECOPT, &strm1);
-		r[0] = r[1];		
+		//r[1] = *(inbuf+k+offset);  			
+		encode_init( *(inbuf+k+offset), LECOPT, &strm1);
+		//r[0] = r[1];		
 	}
 	
 	f_trsmt(fout,strm1);
