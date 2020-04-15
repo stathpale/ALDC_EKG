@@ -9,7 +9,7 @@ static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
-void lec_init(bool first){
+static void lec_init(bool first){
 	
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
 		strm1.data[BUFF_SIZE-1]= tbuf.data;
@@ -19,7 +19,7 @@ void lec_init(bool first){
 	} 
 }
 
-void al2_init(bool first){
+static void al2_init(bool first){
 	
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
 			strm1.data[i]=0;
@@ -40,7 +40,7 @@ void al2_init(bool first){
 	encode(&strm1,AL2OP2_CD_LN, AL2OP2_CD);
 }
 
-void al3_init(bool first){
+static void al3_init(bool first){
 	
 
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
@@ -88,7 +88,7 @@ void aldc (FILE* fout, int16_t* inbuf){
 	
 }
 
-void alec3(FILE* fout, int16_t* inbuf, bool ft ){	
+static void alec3(FILE* fout, int16_t* inbuf, bool ft ){
 	al3_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		encode_init(*(inbuf+k), AL3OPT1, &strm1);
@@ -104,7 +104,7 @@ void alec3(FILE* fout, int16_t* inbuf, bool ft ){
 	}
 }
 
-void alec2(FILE* fout, int16_t* inbuf,bool ft ){	
+static void alec2(FILE* fout, int16_t* inbuf,bool ft ){
 	al2_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){ 			
 		encode_init(*(inbuf+k), AL2OPT1, &strm1);
@@ -117,7 +117,7 @@ void alec2(FILE* fout, int16_t* inbuf,bool ft ){
 	}	
 }
 
-void lec(FILE* fout, int16_t* inbuf, bool ft ){	
+static void lec(FILE* fout, int16_t* inbuf, bool ft ){
 	lec_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){				
 		encode_init( *(inbuf+k), LECOPT, &strm1);
@@ -125,7 +125,7 @@ void lec(FILE* fout, int16_t* inbuf, bool ft ){
 	f_trsmt(fout,strm1);
 }
 
-void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
+static void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
 	uint32_t ni = define_n(di);
 	uint16_t d=two2one_cmpl(di,ni);
 	switch(huf_opt){
@@ -155,14 +155,14 @@ void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
 	if(ni)encode( buf, ni, d);
 }  
 
-uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
+static uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
 	if(dta<0){		
 		return (uint16_t)(msk_tbl[dta_ordr-1]&(dta-1));
 	}else 
 		return (uint16_t)dta;
 }
 
-void encode( cmp_buf* buf, uint32_t len, uint16_t dta){	
+static void encode( cmp_buf* buf, uint32_t len, uint16_t dta){
 	if (len>=13){
 			fprintf(stderr, "order of the sample is %u and can't be compressed\n"
 			"limit = 12 bits\n",len);
@@ -182,7 +182,7 @@ void encode( cmp_buf* buf, uint32_t len, uint16_t dta){
 	
 }
 
-uint32_t define_n(int16_t d){
+static uint32_t define_n(int16_t d){
 	uint32_t  n = 0;
 	while (d !=  0)	{
 		d = d / 2;
@@ -191,7 +191,7 @@ uint32_t define_n(int16_t d){
 	return n;
 }
 
-void f_trsmt(FILE* fout, cmp_buf buf){
+static void f_trsmt(FILE* fout, cmp_buf buf){
 		
 	
 	uint32_t* tbufp=&(buf.data[BUFF_SIZE-1]);
@@ -206,7 +206,7 @@ void f_trsmt(FILE* fout, cmp_buf buf){
 	tbuf.b_ctr= buf.b_ctr;
 }
 
-uint32_t get_buf_sum(int16_t* inbuf) {
+static uint32_t get_buf_sum(int16_t* inbuf) {
 	//do it with recursion latter	
 	uint32_t sum = 0U;
 	for (size_t i = 0; i < ALDC_WND; i++)

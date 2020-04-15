@@ -71,20 +71,20 @@ typedef struct{
 
 // encoding par
 
-uint32_t get_buf_sum(int16_t* inbuf);
+static uint32_t get_buf_sum(int16_t* inbuf);
 void aldc (FILE* fout, int16_t* inbuf);
-void alec3(FILE* fout, int16_t* inbuf,bool ft );
-void alec2(FILE* fout, int16_t* inbuf,bool ft );
-void lec(FILE* fout, int16_t* inbuf, bool ft );
-void al3_init(bool first);
-void al2_init(bool first);
-void lec_init(bool first);
-void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
-uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
-void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
-uint32_t define_n(int16_t d);
+static void alec3(FILE* fout, int16_t* inbuf,bool ft );
+static void alec2(FILE* fout, int16_t* inbuf,bool ft );
+static void lec(FILE* fout, int16_t* inbuf, bool ft );
+static void al3_init(bool first);
+static void al2_init(bool first);
+static void lec_init(bool first);
+static void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
+static uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
+static void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
+static uint32_t define_n(int16_t d);
 void padding(FILE* fout, cmp_buf buf );
-void f_trsmt(FILE* fout, cmp_buf buf);
+static void f_trsmt(FILE* fout, cmp_buf buf);
 
 
 #endif
