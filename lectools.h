@@ -1,7 +1,12 @@
+#ifndef __LECTOOLS_H__
+
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+
 
 /*  Temporarily, choose among the available compression tables
 **  Each option corresponds to a different huffman table
@@ -17,14 +22,14 @@
 ** Sets the unique prefix code to the compressed bit stream
 ** among ALEC2 and ALEC3 tables
 */
-#define AL3OP1_CD 0X02U
-#define AL3OP2_CD 0X03U
-#define AL3OP3_CD  0X0U
+#define AL3OP1_CD 0X2U
+#define AL3OP2_CD 0X3U
+#define AL3OP3_CD 0X0U
 #define AL3OP1_CD_LN 2U
 #define AL3OP2_CD_LN 2U
 #define AL3OP3_CD_LN 1U
-#define AL2OP1_CD 0X01U
-#define AL2OP2_CD 0X00U
+#define AL2OP1_CD 0X1U
+#define AL2OP2_CD 0X0U
 #define AL2OP1_CD_LN 1U
 #define AL2OP2_CD_LN 1U
 
@@ -47,7 +52,6 @@
 #define BUFF_SIZE ALEC_WND
 #define BCTRMX (BUFF_SIZE*32-1)
 
-#ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
 
 typedef void compressor(FILE* ,int16_t*, bool);
@@ -63,6 +67,11 @@ typedef struct{
 	uint32_t data;
 }t_buf;
 
+typedef struct {
+	size_t  ctr;
+	uint32_t* data;
+}outbuf ;
+
 /**
  ** @name File Input and Output
  ** @{
@@ -71,20 +80,20 @@ typedef struct{
 
 // encoding par
 
-static uint32_t get_buf_sum(int16_t* inbuf);
+uint32_t get_buf_sum(int16_t* inbuf);
 void aldc (FILE* fout, int16_t* inbuf);
-static void alec3(FILE* fout, int16_t* inbuf,bool ft );
-static void alec2(FILE* fout, int16_t* inbuf,bool ft );
-static void lec(FILE* fout, int16_t* inbuf, bool ft );
-static void al3_init(bool first);
-static void al2_init(bool first);
-static void lec_init(bool first);
-static void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
-static uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
-static void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
-static uint32_t define_n(int16_t d);
+void alec3(FILE* fout, int16_t* inbuf,bool ft );
+void alec2(FILE* fout, int16_t* inbuf,bool ft );
+void lec(FILE* fout, int16_t* inbuf, bool ft );
+void al3_init(bool first);
+void al2_init(bool first);
+void lec_init(bool first);
+void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
+uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
+void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
+uint32_t define_n(int16_t d);
 void padding(FILE* fout, cmp_buf buf );
-static void f_trsmt(FILE* fout, cmp_buf buf);
+void f_trsmt(FILE* fout, cmp_buf buf);
 
 
 #endif

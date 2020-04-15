@@ -10,15 +10,15 @@
 #include "datasets_paths.h"
 
 
-int main ( int argc, char* argv[argc+1]){
+int main (void) {
 	/* INITIALIZATION*/
 	f_io fio = {.in_id=in8  ,
 			  .out_id=out8  ,
 			.in_mode="rb ",
 			.out_mode="wb"};
+	printf("test no 2\n");
 				
 	int16_t* inbuf=0;
-
 
 	fio=f_open(fio,&inbuf); 
 	
