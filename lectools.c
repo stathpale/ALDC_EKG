@@ -3,7 +3,6 @@
 
 /**/
 
-//static int16_t r[2]={0};			
 static t_buf tbuf={.b_ctr=BCTRMX, .data=0U};
 static cmp_buf strm1={.b_ctr=BCTRMX, .data={0U},};
 static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
@@ -11,23 +10,17 @@ static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 
 void lec_init(bool first){
-	//static bool prev = 0;
-
-	//if(!prev){
+	
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
 		strm1.data[BUFF_SIZE-1]= tbuf.data;
 		strm1.b_ctr = tbuf.b_ctr;
-	//}
 	if(first){
 		encode(&strm1,ALDCOP1_CD_LN, ALDCOP1_CD);
 	} 
-	//prev=first;
 }
 
 void al2_init(bool first){
-	//static bool prev = 0;
-
-	//if(!prev){
+	
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
 			strm1.data[i]=0;
 			strm2.data[i]=0;
@@ -36,26 +29,20 @@ void al2_init(bool first){
 		strm2.data[BUFF_SIZE-1]= tbuf.data;
 		strm1.b_ctr = tbuf.b_ctr;
 		strm2.b_ctr = tbuf.b_ctr;
-	//}
 	if(first){
 		encode(&strm2,ALDCOP1_CD_LN, ALDCOP1_CD);
 		encode(&strm1,ALDCOP1_CD_LN, ALDCOP1_CD);
 	}
 
-	//writing their unique prefix codes	in case they are chosen as the best option	
-	//writing 1 to buffer 2		
+	
 	encode(&strm2,AL2OP1_CD_LN, AL2OP1_CD);
 
-	// 0 to buffer 1	
 	encode(&strm1,AL2OP2_CD_LN, AL2OP2_CD);
-	//prev= first;
 }
 
 void al3_init(bool first){
 	
-	//static bool prev = 0;
 
-	//if(!prev){
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
 			strm1.data[i]=0;
 			strm2.data[i]=0;
@@ -67,7 +54,7 @@ void al3_init(bool first){
 		strm1.b_ctr = tbuf.b_ctr;
 		strm2.b_ctr = tbuf.b_ctr;
 		strm3.b_ctr = tbuf.b_ctr;
-	//}
+	
 	if(first){
 		encode(&strm1,ALDCOP2_CD_LN, ALDCOP2_CD);
 		encode(&strm2,ALDCOP2_CD_LN, ALDCOP2_CD);
@@ -86,40 +73,18 @@ void al3_init(bool first){
 	
 	// 0 to buffer 3	
 	encode(&strm3,AL3OP3_CD_LN, AL3OP3_CD);
-	//prev=first;
-}
-
-uint32_t get_buf_sum(int16_t* inbuf){
-//do it with recursion latter	
-	uint32_t sum = 0U;
-	for(size_t i = 0 ; i<ALDC_WND ; i++)
-		sum+= abs(*(inbuf+i));
-	
-	return sum;
 }
 
 void aldc (FILE* fout, int16_t* inbuf){
-	//compressor* cmprf[]={[0]=alec3, [1]=lec};
-	//compressor_init* initf[]={[0]=al3_init, [1]=lec_init};
+	compressor* cmprf[]={[0]=alec3, [1]=lec};
 	uint32_t buf_sum = 10*get_buf_sum(inbuf);
-	//printf("%u\n", buf_sum/10);
-	//if(buf_sum <= 25*ALDC_WND)
-	//	lec_init(1); 
-	//else
-	//	al3_init(1);
+	
 	for(size_t j = 0 ; j< ALDC_WND ; j+=ALEC_WND){
-		if(buf_sum <= 25*ALDC_WND){
-			lec(fout, inbuf+j,!j);
-		} else {
-			alec3(fout, inbuf+j,!j);			
-		}
-		//printf("%u\n",!f);
-			//alec3(fout, inbuf+j);
-		//initf[buf_sum <= 25*ALDC_WND](!j);
-		//cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j);
+		
+		cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j,!j);
 
 	}
-		//cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j);
+		
 	
 }
 
@@ -240,6 +205,16 @@ void f_trsmt(FILE* fout, cmp_buf buf){
 	tbuf.data= *tbufp ;
 	tbuf.b_ctr= buf.b_ctr;
 }
+
+uint32_t get_buf_sum(int16_t* inbuf) {
+	//do it with recursion latter	
+	uint32_t sum = 0U;
+	for (size_t i = 0; i < ALDC_WND; i++)
+		sum += abs(*(inbuf + i));
+
+	return sum;
+}
+
 
 /* padding function
 void padding(FILE* fout, cmp_buf* buf ){

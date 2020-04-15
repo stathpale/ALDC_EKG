@@ -7,3 +7,8 @@ new2
 new3.c
 ws
 .vs/
+debug/
+alekgc.sln
+alekgc.vcxproj
+alekgc.vcxproj.filters
+alekgc.vcxproj.user

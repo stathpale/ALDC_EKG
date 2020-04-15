@@ -50,7 +50,7 @@
 #ifndef __LECTOOLS_H__
 #define __LECTOOLS_H__
 
-typedef void compressor(FILE* ,int16_t* );
+typedef void compressor(FILE* ,int16_t*, bool);
 typedef void compressor_init( bool);
 
 typedef struct{

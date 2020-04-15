@@ -1,6 +1,5 @@
 #include "fio.h"
-//#ifndef __FIO_H__
-//#define __FIO_H__
+
 
 f_io f_open(f_io files,int16_t** inbufp ){
 	files.in = fopen( files.in_id , files.in_mode);
@@ -46,4 +45,3 @@ void bufndif(FILE* fptr,size_t len, int16_t* buf){
 		prev=temp;
 	}
 }
-//#endif
