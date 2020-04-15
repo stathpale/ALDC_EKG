@@ -1,3 +1,4 @@
+//input
 char const in1[] = "samples/ecgA04apnea.bin";
 char const in2[] = "samples/ecgB05apnea.bin";
 char const in3[] = "samples/ecgEkgMove.bin";
@@ -6,6 +7,8 @@ char const in5[] = "samples/eegchb070707mit.bin";
 char const in6[] = "samples/eegchb141414mit.bin";
 char const in7[] = "samples/orig_eegF4UoP.bin";
 char const in8[] = "samples/orig_eegOZUoP.bin";
+
+//output
 char const out1[] = "cmprsamples/C_ecgA04apnea.bin";
 char const out2[] = "cmprsamples/C_ecgB05apnea.bin";
 char const out3[] = "cmprsamples/C_ecgEkgMove.bin";
