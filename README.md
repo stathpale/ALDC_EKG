@@ -4,7 +4,7 @@ by Palaiologos Efstathios
 
 C implementation
 
-This implementation of the ALEKGC-DRalgorithm is part of an
+This implementation of the ALEKGC-DR algorithm is part of an
 already completed and evaluated study. 
 https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
