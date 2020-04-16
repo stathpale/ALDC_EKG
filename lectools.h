@@ -1,6 +1,7 @@
 #ifndef __LECTOOLS_H__
 
 
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -32,6 +33,12 @@
 #define AL2OP2_CD 0X0U
 #define AL2OP1_CD_LN 1U
 #define AL2OP2_CD_LN 1U
+#define END_TRNM_CD1 0x000DU
+#define END_TRNM_CD2 0x0001U
+
+#define END_TRNM_CD1_LEN 4U
+#define END_TRNM_CD2_LEN 8U
+
 
 /* Unrelated with ALxOPT / LECOPT 
 ** Sets the unique prefix code to the compressed bit stream
@@ -54,7 +61,6 @@
 
 #define __LECTOOLS_H__
 
-typedef void compressor(FILE* ,int16_t*, bool);
 typedef void compressor_init( bool);
 
 typedef struct{
@@ -72,6 +78,8 @@ typedef struct {
 	uint32_t* data;
 }outbuf ;
 
+typedef void compressor(outbuf*, int16_t*, bool);
+
 /**
  ** @name File Input and Output
  ** @{
@@ -81,10 +89,10 @@ typedef struct {
 // encoding par
 
 uint32_t get_buf_sum(int16_t* inbuf);
-void aldc (FILE* fout, int16_t* inbuf);
-void alec3(FILE* fout, int16_t* inbuf,bool ft );
-void alec2(FILE* fout, int16_t* inbuf,bool ft );
-void lec(FILE* fout, int16_t* inbuf, bool ft );
+void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len);
+void alec3(outbuf* bufout, int16_t* inbuf,bool ft );
+void alec2(outbuf* bufout, int16_t* inbuf,bool ft );
+void lec(outbuf* bufout, int16_t* inbuf, bool ft );
 void al3_init(bool first);
 void al2_init(bool first);
 void lec_init(bool first);
@@ -92,8 +100,8 @@ void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
 uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta);
 uint32_t define_n(int16_t d);
-void padding(FILE* fout, cmp_buf buf );
-void f_trsmt(FILE* fout, cmp_buf buf);
+void padding(outbuf* bufout);
+void f_trsmt(outbuf* bufout, cmp_buf buf);
 
 
 #endif

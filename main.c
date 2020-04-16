@@ -1,4 +1,4 @@
-/* Outstanding leg compressor*/
+/* Outstanding aldc compressor*/
 
 /* INCLUDES */
 #include <stdio.h>
@@ -15,21 +15,22 @@ int main (void) {
 	f_io fio = {.in_id=in8  ,
 			  .out_id=out8  ,
 			.in_mode="rb ",
-			.out_mode="wb"};
-	printf("test no 2\n");
-				
+			.out_mode="wb"};				
 	int16_t* inbuf=0;
-
 	fio=f_open(fio,&inbuf); 
+	outbuf bufout = {
+		.ctr = 0,
+	.data = malloc(sizeof(uint8_t) * fio.nsamples* 2) };
 	
-	for ( size_t i = 0 ; i<fio.nsamples; i+=ALDC_WND ){
-		aldc(fio.out,  inbuf+i);
-	}
-	
-	//padding(fio.out, &stream);
-	//printf("%u\n",BCTRMX/32);
+
+
+	aldc(&bufout,  inbuf, fio.nsamples);
+	padding(&bufout);
+	fwrite(bufout.data, sizeof(uint32_t), bufout.ctr, fio.out);
 	f_close(fio);
 	free(inbuf);
 	printf("DONE\n");
+
+
 	return EXIT_SUCCESS;
 }

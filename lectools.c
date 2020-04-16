@@ -11,9 +11,9 @@ static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
 
 void lec_init(bool first){
 	
-		for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
-		strm1.data[BUFF_SIZE-1]= tbuf.data;
-		strm1.b_ctr = tbuf.b_ctr;
+	for(size_t i=0;i<BUFF_SIZE-1 ;i++) strm1.data[i]=0;
+	strm1.data[BUFF_SIZE-1]= tbuf.data;
+	strm1.b_ctr = tbuf.b_ctr;
 	if(first){
 		encode(&strm1,ALDCOP1_CD_LN, ALDCOP1_CD);
 	} 
@@ -75,20 +75,23 @@ void al3_init(bool first){
 	encode(&strm3,AL3OP3_CD_LN, AL3OP3_CD);
 }
 
-void aldc (FILE* fout, int16_t* inbuf){
+void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
 	compressor* cmprf[]={[0]=alec3, [1]=lec};
-	uint32_t buf_sum = 10*get_buf_sum(inbuf);
-	
-	for(size_t j = 0 ; j< ALDC_WND ; j+=ALEC_WND){
-		
-		cmprf[buf_sum <= 25*ALDC_WND](fout, inbuf+j,!j);
-
+	if( inbuf_len%ALDC_WND)	{
+		fprintf(stderr,"length of input buffer must be an integer multiple"
+						"\nof the size of ALDC COMPRESSION WINDOW\n");
+		exit(EXIT_FAILURE);
 	}
-		
-	
+			
+	for (size_t i = 0; i < inbuf_len; i += ALDC_WND) {
+		uint32_t buf_sum = 10 * get_buf_sum(inbuf+i);
+		for (size_t j = 0; j < ALDC_WND; j += ALEC_WND) {
+			cmprf[buf_sum <= 25 * ALDC_WND](bufout, inbuf +i + j, !j);
+		}
+	}
 }
 
-void alec3(FILE* fout, int16_t* inbuf, bool ft ){
+void alec3(outbuf* bufout, int16_t* inbuf, bool ft ){
 	al3_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
 		encode_init(*(inbuf+k), AL3OPT1, &strm1);
@@ -96,33 +99,33 @@ void alec3(FILE* fout, int16_t* inbuf, bool ft ){
 		encode_init(*(inbuf+k), AL3OPT3, &strm3);
 	}
 	if (strm1.b_ctr >= strm2.b_ctr && strm1.b_ctr >= (strm3.b_ctr - 1))	{
-		f_trsmt(fout,strm1);
+		f_trsmt(bufout,strm1);
 	} else if (strm2.b_ctr > strm1.b_ctr && strm2.b_ctr >= (strm3.b_ctr - 1))	{
-		f_trsmt(fout,strm2);
+		f_trsmt(bufout,strm2);
 	} else {
-		f_trsmt(fout,strm3);
+		f_trsmt(bufout,strm3);
 	}
 }
 
-void alec2(FILE* fout, int16_t* inbuf,bool ft ){
+void alec2(outbuf* bufout, int16_t* inbuf,bool ft ){
 	al2_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){ 			
 		encode_init(*(inbuf+k), AL2OPT1, &strm1);
 		encode_init(*(inbuf+k), AL2OPT2, &strm2);
 	}	
 	if (strm1.b_ctr >= strm2.b_ctr ){
-		f_trsmt(fout,strm1);
+		f_trsmt(bufout,strm1);
 	} else {
-		f_trsmt(fout,strm2);
+		f_trsmt(bufout,strm2);
 	}	
 }
 
-void lec(FILE* fout, int16_t* inbuf, bool ft ){
+void lec(outbuf* bufout, int16_t* inbuf, bool ft ){
 	lec_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){				
 		encode_init( *(inbuf+k), LECOPT, &strm1);
 	}	
-	f_trsmt(fout,strm1);
+	f_trsmt(bufout,strm1);
 }
 
 void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
@@ -163,8 +166,8 @@ uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
 }
 
 void encode( cmp_buf* buf, uint32_t len, uint16_t dta){
-	if (len>=13){
-			fprintf(stderr, "order of the sample is %u and can't be compressed\n"
+	if (len>13){
+			fprintf(stderr, "order of the difference of samples is %u and can't be compressed\n"
 			"limit = 12 bits\n",len);
 			exit(EXIT_FAILURE);
 	}	
@@ -191,14 +194,15 @@ uint32_t define_n(int16_t d){
 	return n;
 }
 
-void f_trsmt(FILE* fout, cmp_buf buf){
+void f_trsmt(outbuf* bufout, cmp_buf buf){
 		
 	
 	uint32_t* tbufp=&(buf.data[BUFF_SIZE-1]);
 	size_t slen=(BCTRMX - buf.b_ctr) / 32;
 	
-	while (slen > 0){		
-		fwrite( tbufp,sizeof(uint32_t),1,fout);
+	while (slen > 0){
+		bufout->data[bufout->ctr++] = *tbufp;
+		//fwrite( tbufp,sizeof(uint32_t),1,fout);
 		slen--; tbufp--; buf.b_ctr += 32;
 	}
 	
@@ -216,17 +220,15 @@ uint32_t get_buf_sum(int16_t* inbuf) {
 }
 
 
-/* padding function
-void padding(FILE* fout, cmp_buf* buf ){
-	encode( buf, 4U, 0X000FU);
-	encode( buf, 8U, 0X00FFU);
-	fwrite( &buf->data[1],sizeof(uint32_t),1,fout);	
-		//buf->b_ctr-=32;
-	if( (buf->b_ctr) < (buf->b_max-32) )		
-	if( (buf->b_ctr) < BCTRMX-32 )		
-		if(!fwrite( &buf->data[0],sizeof(uint32_t),1,fout)){
-			fprintf(stderr, "could not write to file \n");
-			exit(EXIT_FAILURE);
-		}
-	
-}*/
+//padding function
+void padding(outbuf* bufout ){
+	lec_init(false);
+	encode(&strm1, END_TRNM_CD1_LEN, END_TRNM_CD1);
+	encode(&strm1, END_TRNM_CD2_LEN, END_TRNM_CD2);
+	//uint32_t* tbufp = &(strm1.data[BUFF_SIZE - 1]);
+
+	bufout->data[bufout->ctr++] = strm1.data[BUFF_SIZE - 1];
+	//buf->b_ctr-=32;
+	if( (strm1.b_ctr) < (BCTRMX -32) ) 		
+		bufout->data[bufout->ctr++] = strm1.data[BUFF_SIZE - 2];	
+}
