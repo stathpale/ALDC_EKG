@@ -32,7 +32,7 @@ https://ieeexplore.ieee.org/document/8418357
 
 
 
-**Benchmarks on Custom Dataset under Real-Time Operation of  STM32F407VGT(84MHz) :** 
+**Benchmarks on Custom Dataset under Real-Time Operation of STM32F407VGT(84MHz) :**
 
 The Evaluation of the Proposed Compression Algorithms  is performed using a Real-Time "Receipt--Compression--Transmission" scenario
 
