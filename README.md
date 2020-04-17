@@ -1,7 +1,14 @@
 **Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions**
 **by Palaiologos Efstathios**
 
+<<<<<<< HEAD
 This C implementation of the ALEKGC-DR algorithm is part of an already completed and evaluated study. 
+=======
+C implementation
+
+This implementation of the ALEKGC-DR algorithm is part of an
+already completed and evaluated study. 
+>>>>>>> e8939b61908c8f4482243ce3158c48bf4a0033e6
 https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
 This version targets to demonstrate the benefits of the modifications that were applied to the basic ALDC algorithm in order to improve its overall performance when compressing EKGs.
