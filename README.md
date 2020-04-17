@@ -6,13 +6,11 @@ https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
 This version targets to demonstrate the benefits of the modifications that were applied to the basic ALDC algorithm in order to improve its overall performance when compressing EKGs.
 
-The Evaluation of the Proposed Compression Algorithms  is performed using a Real-Time "Receipt--Compression--Transmission" scenario on STM32F407VGT(84MHz) 
-
 
 
 **Benchmarks on MIT ARYTMIA DATABASE**
 
-(https://ieeexplore.ieee.org/document/8418357)
+https://ieeexplore.ieee.org/document/8418357
 
 | Entropy Encoding                                             | Compression Ratio |
 | ------------------------------------------------------------ | :---------------: |
@@ -30,7 +28,17 @@ The Evaluation of the Proposed Compression Algorithms  is performed using a Real
 
 
 
-**Benchmarks on Custom Dataset**
+
+
+
+
+**Benchmarks on Custom Dataset under Real-Time Operation **
+
+**of  STM32F407VGT(84MHz) :** **
+
+**The Evaluation of the Proposed Compression Algorithms  is performed using a Real-Time "Receipt--Compression--Transmission" scenario**
+
+
 
 ![1](./png/1.PNG)
 
