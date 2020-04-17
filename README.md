@@ -1,5 +1,5 @@
-Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions
-by Palaiologos Efstathios
+**Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions**
+**by Palaiologos Efstathios**
 
 This C implementation of the ALEKGC-DR algorithm is part of an already completed and evaluated study. 
 https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
@@ -24,19 +24,9 @@ https://ieeexplore.ieee.org/document/8418357
 | Huffman Coding with Fan Algorithm                            |       2.10        |
 | Content-Adaptive Golomb-Rice Coding                          |       2.77        |
 
+**Benchmarks on Custom Dataset under Real-Time Operation of  STM32F407VGT(84MHz) :** **
 
-
-
-
-
-
-
-
-**Benchmarks on Custom Dataset under Real-Time Operation **
-
-**of  STM32F407VGT(84MHz) :** **
-
-**The Evaluation of the Proposed Compression Algorithms  is performed using a Real-Time "Receipt--Compression--Transmission" scenario**
+The Evaluation of the Proposed Compression Algorithms  is performed using a Real-Time "Receipt--Compression--Transmission" scenario
 
 
 
