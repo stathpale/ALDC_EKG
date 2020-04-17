@@ -8,17 +8,13 @@ This version targets to demonstrate the benefits of the modifications that were 
 
 **Datasets :**  
 
-​                                                 **Recording     Resolution  Sampling Rate**
-
-![image-20200417082931559](C:\Users\stath\AppData\Roaming\Typora\typora-user-images\image-20200417082931559.png)
 
 
+![1](./png/1.PNG)
+
+![2](C:./png/2.PNG)
+
+![1](./png/3.PNG)
 
 
-
-
-
-![image-20200417082506145](C:\Users\stath\AppData\Roaming\Typora\typora-user-images\image-20200417082506145.png)
-
-![image-20200417082411559](C:\Users\stath\AppData\Roaming\Typora\typora-user-images\image-20200417082411559.png)
 
