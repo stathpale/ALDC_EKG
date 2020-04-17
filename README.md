@@ -12,7 +12,7 @@ This version targets to demonstrate the benefits of the modifications that were 
 
 ![1](./png/1.PNG)
 
-![2](C:./png/2.PNG)
+![1](./png/2.PNG)
 
 ![1](./png/3.PNG)
 
