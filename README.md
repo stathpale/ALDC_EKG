@@ -14,7 +14,7 @@ https://ieeexplore.ieee.org/document/8418357
 
 | Entropy Encoding                                             | Compression Ratio |
 | ------------------------------------------------------------ | :---------------: |
-| **Proposed: ALDC "3" (Hybrid Single-1 stage Huffman - Multiple Two Stage Huffman with Linear Prediction)** |     **3.13**      |
+| **Proposed: ALDC "3" (Hybrid Single-1 stage Huffman - Multiple Two Stage Huffman with Decision Regions** |     **3.13**      |
 | Golomb-Rice Coding                                           |       2.38        |
 | Fixed length Coding                                          |       2.38        |
 | Fixed length  Coding with LMS predictor                      |       2.28        |
