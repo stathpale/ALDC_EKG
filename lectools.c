@@ -1,11 +1,48 @@
 #include "lectools.h"
 #include "huftbl.c"
 /**/
-
 static t_buf tbuf={.b_ctr=BCTRMX, .data=0U};
 static cmp_buf strm1={.b_ctr=BCTRMX, .data={0U},};
-static cmp_buf strm2={.b_ctr=BCTRMX, .data={0U},};
-static cmp_buf strm3={.b_ctr=BCTRMX, .data={0U},};
+static cmp_buf strm2 = { .b_ctr = BCTRMX, .data = {0U}, };
+static cmp_buf strm3 = { .b_ctr = BCTRMX, .data = {0U}, };
+
+
+void cmp_buf_init(void) {
+	tbuf.b_ctr = BCTRMX;
+	tbuf.data = 0U;
+	strm1.b_ctr = BCTRMX ;
+	strm2.b_ctr = BCTRMX;
+	strm3.b_ctr = BCTRMX;
+
+	for (size_t i = 0; i < BUFF_SIZE; ++i) {
+		strm1.data[i] = 0U;
+		strm2.data[i] = 0U;
+		strm3.data[i] = 0U;
+	}
+
+}
+
+
+
+
+void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
+	compressor* cmprf[]={[0]=alec3, [1]=lec};
+	if( inbuf_len%ALDC_WND)	{
+		fprintf(stderr,"length of input buffer must be an integer multiple"
+						"\nof the size of ALDC COMPRESSION WINDOW\n");
+		exit(EXIT_FAILURE);
+	}
+			
+	for (size_t i = 0; i < inbuf_len; i += ALDC_WND) {
+		uint32_t buf_sum = 10 * get_buf_sum(inbuf+i);
+		for (size_t j = 0; j < ALDC_WND; j += ALEC_WND) {
+			cmprf[buf_sum <= 25 * ALDC_WND](bufout, inbuf +i + j, !j);
+		}
+	}
+}
+
+
+#ifndef __ALDC_CMPR_3_2__
 
 static void lec_init(bool first){
 	
@@ -17,8 +54,19 @@ static void lec_init(bool first){
 	} 
 }
 
+static void lec(outbuf* bufout, int16_t* inbuf, bool ft ){
+	lec_init(ft);
+	for (size_t k = 0 ; k <ALEC_WND; k++){				
+		encode_init( *(inbuf+k), LECOPT, &strm1);
+	}	
+	f_trsmt(bufout,strm1);
+}
+
+#endif
+
 
 #ifndef __ALDC_CMPR_3_1__
+
 static void al2_init(bool first){
 	
 		for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
@@ -55,6 +103,9 @@ static void alec2(outbuf* bufout, int16_t* inbuf, bool ft) {
 }
 
 #endif
+
+#ifndef __ALDC_CMPR_2_1__
+
 static void al3_init(bool first){
 	
 
@@ -90,22 +141,6 @@ static void al3_init(bool first){
 	encode(&strm3,AL3OP3_CD_LN, AL3OP3_CD);
 }
 
-void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
-	compressor* cmprf[]={[0]=alec3, [1]=lec};
-	if( inbuf_len%ALDC_WND)	{
-		fprintf(stderr,"length of input buffer must be an integer multiple"
-						"\nof the size of ALDC COMPRESSION WINDOW\n");
-		exit(EXIT_FAILURE);
-	}
-			
-	for (size_t i = 0; i < inbuf_len; i += ALDC_WND) {
-		uint32_t buf_sum = 10 * get_buf_sum(inbuf+i);
-		for (size_t j = 0; j < ALDC_WND; j += ALEC_WND) {
-			cmprf[buf_sum <= 25 * ALDC_WND](bufout, inbuf +i + j, !j);
-		}
-	}
-}
-
 static void alec3(outbuf* bufout, int16_t* inbuf, bool ft ){
 	al3_init(ft);
 	for (size_t k = 0 ; k <ALEC_WND; k++){
@@ -122,14 +157,8 @@ static void alec3(outbuf* bufout, int16_t* inbuf, bool ft ){
 	}
 }
 
+#endif
 
-static void lec(outbuf* bufout, int16_t* inbuf, bool ft ){
-	lec_init(ft);
-	for (size_t k = 0 ; k <ALEC_WND; k++){				
-		encode_init( *(inbuf+k), LECOPT, &strm1);
-	}	
-	f_trsmt(bufout,strm1);
-}
 
 static void encode_init( int16_t di, char const huf_opt,cmp_buf* buf){
 	uint32_t ni = define_n(di);
@@ -223,15 +252,12 @@ static uint32_t get_buf_sum(int16_t* inbuf) {
 }
 
 
-//padding function
 void padding(outbuf* bufout ){
 	lec_init(false);
 	encode(&strm1, END_TRNM_CD1_LEN, END_TRNM_CD1);
 	encode(&strm1, END_TRNM_CD2_LEN, END_TRNM_CD2);
-	//uint32_t* tbufp = &(strm1.data[BUFF_SIZE - 1]);
 
 	bufout->data[bufout->ctr++] = strm1.data[BUFF_SIZE - 1];
-	//buf->b_ctr-=32;
 	if( (strm1.b_ctr) < (BCTRMX -32) ) 		
 		bufout->data[bufout->ctr++] = strm1.data[BUFF_SIZE - 2];	
 }

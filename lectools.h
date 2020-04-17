@@ -52,9 +52,8 @@
     /* Unrelated with ALxOPT / LECOPT 
     ** Sets the unique prefix code to the compressed bit stream
     */
-    #define ALDC_WND 40
-    #define ALEC_WND 10
-
+    #define ALDC_WND 80
+    #define ALEC_WND 8
 
     #define BUFF_SIZE ALEC_WND
     #define BCTRMX (BUFF_SIZE*32-1)
