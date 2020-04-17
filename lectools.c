@@ -26,7 +26,9 @@ void cmp_buf_init(void) {
 
 
 void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
-	compressor* cmprf[]={[0]=alec3, [1]=lec};
+	//compressor* cmprf[]={[0]=alec3, [1]=lec};
+	compressor* cmprf[] = { [0] = alec2,[1] = lec };
+
 	if( inbuf_len%ALDC_WND)	{
 		fprintf(stderr,"length of input buffer must be an integer multiple"
 						"\nof the size of ALDC COMPRESSION WINDOW\n");

@@ -1,5 +1,8 @@
 #ifndef __LECTOOLS_H__
 
+    #define ALDC_WND 50
+    #define ALEC_WND 10
+
 
 
     #include <stdio.h>
@@ -12,7 +15,7 @@
     /*  Temporarily, choose among the available compression tables
     **  Each option corresponds to a different huffman table
     */
-    #define LECOPT  '1'
+    #define LECOPT  '4'
     #define AL3OPT1 '1'
     #define AL3OPT2 '2'
     #define AL3OPT3 '3'
@@ -52,9 +55,7 @@
     /* Unrelated with ALxOPT / LECOPT 
     ** Sets the unique prefix code to the compressed bit stream
     */
-    #define ALDC_WND 80
-    #define ALEC_WND 8
-
+  
     #define BUFF_SIZE ALEC_WND
     #define BCTRMX (BUFF_SIZE*32-1)
 

@@ -1,5 +1,5 @@
-#define __ALDC_CMPR_3_1__
-
+//#define __ALDC_CMPR_3_1__
+//#define __ALDC_CMPR_2_1__
 #include <stdbool.h>
 #include <stdint.h>
 typedef struct {
