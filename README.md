@@ -1,6 +1,6 @@
-Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions 
+# Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions 
 
-by Palaiologos Efstathios
+**by Palaiologos Efstathios**
 
 
 
