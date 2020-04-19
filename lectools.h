@@ -1,8 +1,7 @@
 #ifndef __LECTOOLS_H__
 
-    #define ALDC_WND 50
+    #define ALDC_WND 40
     #define ALEC_WND 10
-
 
 
     #include <stdio.h>
@@ -15,7 +14,7 @@
     /*  Temporarily, choose among the available compression tables
     **  Each option corresponds to a different huffman table
     */
-    #define LECOPT  '4'
+    #define LECOPT  '1'
     #define AL3OPT1 '1'
     #define AL3OPT2 '2'
     #define AL3OPT3 '3'
@@ -81,15 +80,36 @@
  
 
     // encoding par
+#   if defined(__ALDC__)
 
     static uint32_t get_buf_sum(int16_t* inbuf);
+
+#   endif
+
+
+
+#   if defined(__ALDC_3_2__) || defined(__ALDC_3_1__) || defined(__ALEC_3__)
+
     static void alec3(outbuf* bufout, int16_t* inbuf,bool ft );
-    static void lec(outbuf* bufout, int16_t* inbuf, bool ft );
     static void al3_init(bool first);
-    #ifndef __ALDC_CMPR_3_1__
-     static void alec2(outbuf* bufout, int16_t* inbuf, bool ft);
-     static void al2_init(bool first);
-    #endif
+
+#   endif
+
+
+#   if defined(__ALDC_3_2__) || defined(__ALDC_2_1__) || defined(__ALEC_2__)
+
+    static void alec2(outbuf* bufout, int16_t* inbuf, bool ft);
+    static void al2_init(bool first);
+
+#   endif
+
+
+#   if defined(__ALDC_3_1__) || defined(__ALDC_2_1__) || defined(__LEC__)
+
+    static void lec(outbuf* bufout, int16_t* inbuf, bool ft );
+
+#   endif
+
     static void lec_init(bool first);
     static void encode_init(int16_t d, char const huf_opt, cmp_buf* buf);
     static uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);

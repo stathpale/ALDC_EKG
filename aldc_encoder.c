@@ -12,9 +12,9 @@
 
 int main(void) {
 	/* INITIALIZATION*/
-	for ( size_t fctr=0; fctr<96; fctr++){
-		f_io fio = { .in_id = mitin[fctr]  ,
-				  .out_id = mitout[fctr] ,
+	for ( size_t fctr=0; fctr<8; fctr++){
+		f_io fio = { .in_id = in[fctr]  ,
+				  .out_id = out[fctr] ,
 				  .in_mode = "rb ",
 				  .out_mode = "wb" };
 		int16_t* inbuf = 0;
