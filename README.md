@@ -1,4 +1,6 @@
-# Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions ![1](./png/0.jpg)
+@mainpage Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions 
+
+![1](./png/0.PNG)
 
 
 

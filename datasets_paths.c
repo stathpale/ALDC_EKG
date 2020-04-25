@@ -1,30 +1,27 @@
 //input
-char const in1[] = "samples/ecgA04apnea.bin";
-char const in2[] = "samples/ecgB05apnea.bin";
-char const in3[] = "samples/ecgEkgMove.bin";
-char const in4[] = "samples/orig_ecgUoP.bin";
-char const in5[] = "samples/eegchb070707mit.bin";
-char const in6[] = "samples/eegchb141414mit.bin";
-char const in7[] = "samples/orig_eegF4UoP.bin";
-char const in8[] = "samples/orig_eegOZUoP.bin";
 
-char const* in[] = { in1,in2,in3,in4,in5,in6,in7,in8 };
+char const* samples_dir[] = {"samples/ecgA04apnea.bin",
+	"samples/ecgB05apnea.bin",
+	"samples/ecgEkgMove.bin",
+	"samples/orig_ecgUoP.bin",
+	"samples/eegchb070707mit.bin",
+	"samples/eegchb141414mit.bin",
+	"samples/orig_eegF4UoP.bin",
+	"samples/orig_eegOZUoP.bin" };
+
 //output
-char const out1[] = "cmprsamples/C_ecgA04apnea.bin";
-char const out2[] = "cmprsamples/C_ecgB05apnea.bin";
-char const out3[] = "cmprsamples/C_ecgEkgMove.bin";
-char const out4[] = "cmprsamples/C_orig_ecgUoP.bin";
-char const out5[] = "cmprsamples/C_eegchb070707mit.bin";
-char const out6[] = "cmprsamples/C_eegchb141414mit.bin";
-char const out7[] = "cmprsamples/C_orig_eegF4UoP.bin";
-char const out8[] = "cmprsamples/C_orig_eegOZUoP.bin";
+char const* cmpr_samples_dir[] ={"cmprsamples/C_ecgA04apnea.bin",
+	"cmprsamples/C_ecgB05apnea.bin",
+	"cmprsamples/C_ecgEkgMove.bin",
+	"cmprsamples/C_orig_ecgUoP.bin",
+	"cmprsamples/C_eegchb070707mit.bin",
+	"cmprsamples/C_eegchb141414mit.bin",
+	"cmprsamples/C_orig_eegF4UoP.bin",
+	"cmprsamples/C_orig_eegOZUoP.bin", };
 
-char const* out[] = { out1, out2, out3, out4, out5, out6, out7, out8, };
 
 //apnea input
-
-
-char const* mitin[] = {
+char const* mit_samples_dir[] = {
 	"mit/100m1.bin",
 	"mit/100m2.bin",
 	"mit/101m1.bin",
@@ -122,7 +119,7 @@ char const* mitin[] = {
 	"mit/234m1.bin",
 	"mit/234m2.bin",};
 
-char const* mitout[] = {
+char const* mit_cmpr_samples_dir[] = {
 	"cmpmit/100m1.bin",
 	"cmpmit/100m2.bin",
 	"cmpmit/101m1.bin",

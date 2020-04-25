@@ -1,4 +1,9 @@
+/** @huftbl.c
+ */
 #include <stdint.h>
+
+/** test huf table
+*/
 static const uint16_t msk_tbl[12] = {	[ 0]=0X0001U, [ 1]=0X0003U, [ 2]=0X0007U,
 										[ 3]=0X000fU, [ 4]=0X001fU, [ 5]=0X003fU,
 										[ 6]=0X007fU, [ 7]=0X00ffU, [ 8]=0X01ffU, 

@@ -10,8 +10,6 @@ typedef struct{
 	FILE* out;
 	char const* in_id;
 	char const* out_id;
-	char const* in_mode;
-	char const* out_mode;
 	size_t nsamples;
 }f_io;
 
@@ -22,7 +20,7 @@ typedef struct{
  **/
  
 /** @brief Open input and output files
- ** which are included in the typedef f_io  @a files.
+ ** which are included in the typedef f_io  @a files.  
  **
  ** Only use this function with a partly intialised f_io struct
  ** @a .in_id and @a .outid  aswell @a in_mode  and @a out.mode must
@@ -38,9 +36,5 @@ f_io f_open(f_io files,int16_t**);
 
 void f_close(f_io files);
 
-size_t f_get_len(FILE* fptr);
 
-int16_t f_fetch_sample(FILE* fptr);
-
-void bufndif(FILE* fptr,size_t len, int16_t* buf);
 #endif

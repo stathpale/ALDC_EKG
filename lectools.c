@@ -1,6 +1,5 @@
 #include "lectools.h"
 #include "huftbl.c"
-/**/
 
 #if  defined(__ALDC_3_1__) || defined(__ALDC_3_2__) || defined(__ALEC_3__)
 
@@ -11,7 +10,6 @@ static cmp_buf strm3 = { .b_ctr = BCTRMX, .data = {0U}, };
 #if !defined(__LEC__)
 
 static cmp_buf strm2 = { .b_ctr = BCTRMX, .data = {0U}, };
-
 
 #endif
 
@@ -24,38 +22,38 @@ static t_buf tbuf = { .b_ctr = BCTRMX, .data = 0U };
 
 void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
 
-# if   defined(__ALDC_3_1__)
+#	if   defined(__ALDC_3_1__)
 
 	static compressor* cmprf[] = { [0] = alec3,[1] = lec };
 
-# elif  defined( __ALDC_2_1__)
+#	elif  defined( __ALDC_2_1__)
 
 	compressor* cmprf[] = { [0] = alec2,[1] = lec };
 
-# elif   defined(__ALDC_3_2__)
+#	elif   defined(__ALDC_3_2__)
 
 	compressor* cmprf[] = { [0] = alec3,[1] = alec2 };
 
-# elif defined(__ALEC_3__)
+#	elif defined(__ALEC_3__)
 
 	compressor* cmprf = alec3;
 
 
-# elif defined(__ALEC_2__)
+#	elif defined(__ALEC_2__)
 
 	compressor* cmprf = alec2;
 
 
-# elif defined(__LEC__)
+#	elif defined(__LEC__)
 
 	compressor* cmprf = lec;
 
-# else
+#	else
 
 	fprintf(stderr, "ERROR COMPRESSION METHOD IS UNDIFINED \m");
 	exit(EXIT_FAILURE);
 
-# endif
+#	endif
 
 
 	if( inbuf_len%ALDC_WND)	{
@@ -73,13 +71,15 @@ void aldc (outbuf* bufout, int16_t* inbuf,size_t inbuf_len){
 	}
 
 
-	for (size_t i = 0; i < inbuf_len; i += ALDC_WND) {
+	for (size_t i = 0; i < inbuf_len; i += ALDC_WND) 
+	{
 
 #	ifdef __ALDC__
 		uint32_t buf_sum = 10 * get_buf_sum(inbuf+i);
 #	endif
 
-		for (size_t j = 0; j < ALDC_WND; j += ALEC_WND) {
+		for (size_t j = 0; j < ALDC_WND; j += ALEC_WND)
+		{
 
 #	if defined(__ALDC__)
 			cmprf[buf_sum <= 25 * ALDC_WND](bufout, inbuf +i + j, !j);
@@ -102,11 +102,11 @@ static void lec(outbuf* bufout, int16_t* inbuf, bool ft ){
 
 	lec_init(0);
 
-#	 else
+#	else
 
 	lec_init(ft);
 
-#	 endif
+#	endif
 
 	for (size_t k = 0 ; k <ALEC_WND; k++){				
 		encode_init( *(inbuf+k), LECOPT, &strm1);
@@ -122,8 +122,8 @@ static void lec(outbuf* bufout, int16_t* inbuf, bool ft ){
 static void al2_init(bool first){
 	
 	for(size_t i=0;i<BUFF_SIZE-1 ;i++) {
-			strm1.data[i]=0;
-			strm2.data[i]=0;
+		strm1.data[i]=0;
+		strm2.data[i]=0;
 	}
 	strm1.data[BUFF_SIZE-1]= tbuf.data;
 	strm2.data[BUFF_SIZE-1]= tbuf.data;
@@ -151,11 +151,11 @@ static void alec2(outbuf* bufout, int16_t* inbuf, bool ft) {
 
 	al2_init(0);
 
-#	 else
+#	else
 
 	al2_init(ft);
 
-#	 endif
+#	endif
 
 
 	for (size_t k = 0; k < ALEC_WND; k++) {
@@ -222,7 +222,7 @@ static void alec3(outbuf* bufout, int16_t* inbuf, bool ft ){
 
 	al3_init(ft);
 
-#endif
+#	endif
 
 
 	for (size_t k = 0 ; k <ALEC_WND; k++){
@@ -244,7 +244,8 @@ static void alec3(outbuf* bufout, int16_t* inbuf, bool ft ){
 
 static void lec_init(bool first) {
 
-	for (size_t i = 0; i < BUFF_SIZE - 1; i++) strm1.data[i] = 0;
+	for (size_t i = 0; i < BUFF_SIZE - 1; i++) 
+		strm1.data[i] = 0;
 	strm1.data[BUFF_SIZE - 1] = tbuf.data;
 	strm1.b_ctr = tbuf.b_ctr;
 
@@ -294,7 +295,7 @@ static uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr){
 
 	if(dta<0){		
 		return (uint16_t)(msk_tbl[dta_ordr-1]&(dta-1));
-	}else 
+	} else 
 		return (uint16_t)dta;
 }
 
@@ -407,5 +408,4 @@ void cmp_buf_init(void) {
 #	endif
 
 	}
-
 }
