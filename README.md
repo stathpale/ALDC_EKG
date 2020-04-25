@@ -1,4 +1,6 @@
-@mainpage Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions 
+@mainpage ALDC-DR_EKG / ALDC-DR / ALEC / LEC DEMO
+
+# Adaptive Lossless Electrocardiogram Compression Algorithm with Decision Regions 
 
 
 
