@@ -1,0 +1,8 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,56,133"/>
+<area shape="rect" id="node2" href="$aldc_8h.html#aa17084e08486e0927b047e51a98135e1" title="Encoding function that uses the predefined by the user compression method." alt="" coords="128,5,175,32"/>
+<area shape="rect" id="node3" href="$aldc_8h.html#abb94a9c59e6215652246954dc77fa6d5" title="Initializes the internal compression buffers and variables." alt="" coords="104,56,199,83"/>
+<area shape="rect" id="node4" href="$fio_8c.html#a5b09a925834df62bb7128de317e7bacd" title=" " alt="" coords="120,107,183,133"/>
+<area shape="rect" id="node5" href="$fio_8c.html#aa96a3b161ca3b555692c65de4bdab829" title="Open input and output files which are included in the typedef f_io files." alt="" coords="121,157,181,184"/>
+<area shape="rect" id="node6" href="$aldc_8h.html#a00831b52ff8e853d09ee4f5f8c9f84a8" title="Finishes the compression process." alt="" coords="118,208,185,235"/>
+</map>
