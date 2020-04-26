@@ -23,7 +23,7 @@ https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
 ## What is different in this algorithm ?
 
-#### *It has the best trade-off  between compression ratio and computational delay because it compresses with more Huffman tables only when its necessary*
+### *It has the best trade-off  between compression ratio and computational delay because it compresses with more Huffman tables only when its necessary*
 
 Take a look how it works :
 
