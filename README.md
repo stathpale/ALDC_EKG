@@ -4,7 +4,7 @@
 
 
 
-![1](./png/0.PNG)
+![1](./docs/html/png/0.PNG)
 
 
 
@@ -42,13 +42,13 @@ The Evaluation of the Proposed Compression Algorithms  is performed using a Real
 
 ![1](./png/1.PNG)
 
-![1](./png/2.PNG)
+![1](./docs/html/png/2.PNG)
 
-![1](./png/3.PNG)
+![1](./docs/html/png/3.PNG)
 
 
 
-![1](./png/4.PNG)
+![1](./docs/html/png/4.PNG)
 
 
 
