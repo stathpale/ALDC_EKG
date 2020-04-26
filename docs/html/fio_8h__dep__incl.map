@@ -1,5 +1,5 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/fio.h" name="C:/sourcefiles/oee/2.ALDC_EKG/fio.h">
-<area shape="rect" id="node1" title=" " alt="" coords="132,5,267,47"/>
-<area shape="rect" id="node2" href="$aldc__encoder_8c.html" title=" " alt="" coords="5,95,204,136"/>
-<area shape="rect" id="node3" href="$fio_8c.html" title=" " alt="" coords="228,95,363,136"/>
+<map id="fio.h" name="fio.h">
+<area shape="rect" id="node1" title="File input and output Interface." alt="" coords="88,5,135,32"/>
+<area shape="rect" id="node2" href="$aldc__encoder_8c.html" title="main function file" alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$fio_8c.html" title="File input and output hidden implementation." alt="" coords="140,80,187,107"/>
 </map>

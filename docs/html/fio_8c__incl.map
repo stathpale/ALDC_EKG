@@ -1,8 +1,8 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/fio.c" name="C:/sourcefiles/oee/2.ALDC_EKG/fio.c">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,234,47"/>
-<area shape="rect" id="node2" href="$fio_8h.html" title=" " alt="" coords="101,95,147,121"/>
-<area shape="rect" id="node6" href="$fio__func_8h.html" title=" " alt="" coords="172,95,249,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,169,67,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="91,169,157,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="181,169,245,196"/>
+<map id="fio.c" name="fio.c">
+<area shape="rect" id="node1" title="File input and output hidden implementation." alt="" coords="143,5,190,32"/>
+<area shape="rect" id="node2" href="$fio_8h.html" title="File input and output Interface." alt="" coords="101,80,147,107"/>
+<area shape="rect" id="node6" href="$fio__func_8h.html" title="File input and output header of internal functions." alt="" coords="172,80,249,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,155,67,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="91,155,157,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="181,155,245,181"/>
 </map>

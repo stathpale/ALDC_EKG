@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALDC_EKG: C:/sourcefiles/oee/2.ALDC_EKG/fio.h Source File</title>
+<title>ALDC_EKG: fio.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
-   <div id="projectbrief">Ultra Low Resource and Fast  Real-Time Compression Algorithm (optimised for Electrogardiograms )</div>
   </td>
  </tr>
  </tbody>
@@ -63,57 +62,43 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">C:/sourcefiles/oee/2.ALDC_EKG/fio.h</div>  </div>
+<div class="title">fio.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="fio_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef __FIO_H__</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define __FIO_H__</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structf__io.html">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">    9</a></span>&#160;    FILE* <a class="code" href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">in</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">   10</a></span>&#160;    FILE* <a class="code" href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">out</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structf__io.html#ab213c91320a5c086d7287d5b70652366">   11</a></span>&#160;    <span class="keywordtype">char</span> <span class="keyword">const</span>* <a class="code" href="structf__io.html#ab213c91320a5c086d7287d5b70652366">in_id</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">   12</a></span>&#160;    <span class="keywordtype">char</span> <span class="keyword">const</span>* <a class="code" href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">out_id</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">   13</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">nsamples</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}<a class="code" href="structf__io.html">f_io</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="structf__io.html">f_io</a> <a class="code" href="fio_8h.html#ae5d43b2963be92f55f89b46136e77a78">f_open</a>(<a class="code" href="structf__io.html">f_io</a> files,int16_t**);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fio_8h.html#a5b09a925834df62bb7128de317e7bacd">f_close</a>(<a class="code" href="structf__io.html">f_io</a> files);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef __FIO_H__</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define __FIO_H__       </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="fio_8h.html#a6856fd9108a87324f7b20ffae7ed07d1">   16</a></span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structf__io.html">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">   23</a></span>&#160;    FILE* <a class="code" href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">in</a>;           </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">   24</a></span>&#160;    FILE* <a class="code" href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">out</a>;          </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structf__io.html#ab213c91320a5c086d7287d5b70652366">   25</a></span>&#160;    <span class="keywordtype">char</span> <span class="keyword">const</span>* <a class="code" href="structf__io.html#ab213c91320a5c086d7287d5b70652366">in_id</a>;  </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">   26</a></span>&#160;    <span class="keywordtype">char</span> <span class="keyword">const</span>* <a class="code" href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">out_id</a>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">   27</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">nsamples</a>;    </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}<a class="code" href="structf__io.html">f_io</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<a class="code" href="structf__io.html">f_io</a> <a class="code" href="fio_8h.html#a038ce25bf27a03ad359c2f44f74ea54c">f_open</a>(<a class="code" href="structf__io.html">f_io</a> files,int16_t** difbuf_adr);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fio_8h.html#a5b09a925834df62bb7128de317e7bacd">f_close</a>(<a class="code" href="structf__io.html">f_io</a> files);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="afio__func_8h_html"><div class="ttname"><a href="fio__func_8h.html">fio_func.h</a></div></div>
-<div class="ttc" id="astructf__io_html_aece04f1a30496ad2beb7b0abe91f4a25"><div class="ttname"><a href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">f_io::out_id</a></div><div class="ttdeci">char const  * out_id</div><div class="ttdef"><b>Definition:</b> fio.h:12</div></div>
-<div class="ttc" id="astructoutbuf_html_aa1cf91039f621340f15bcd4c95f582ef"><div class="ttname"><a href="structoutbuf.html#aa1cf91039f621340f15bcd4c95f582ef">outbuf::data</a></div><div class="ttdeci">uint32_t * data</div><div class="ttdoc">Is the starting address of the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:125</div></div>
-<div class="ttc" id="afio_8c_html_aa96a3b161ca3b555692c65de4bdab829"><div class="ttname"><a href="fio_8c.html#aa96a3b161ca3b555692c65de4bdab829">f_open</a></div><div class="ttdeci">f_io f_open(f_io files, int16_t **inbufp)</div><div class="ttdoc">Open input and output files which are included in the typedef f_io files.</div><div class="ttdef"><b>Definition:</b> fio.c:6</div></div>
-<div class="ttc" id="astructf__io_html_ab213c91320a5c086d7287d5b70652366"><div class="ttname"><a href="structf__io.html#ab213c91320a5c086d7287d5b70652366">f_io::in_id</a></div><div class="ttdeci">char const  * in_id</div><div class="ttdef"><b>Definition:</b> fio.h:11</div></div>
-<div class="ttc" id="astructoutbuf_html"><div class="ttname"><a href="structoutbuf.html">outbuf</a></div><div class="ttdoc">A structure to represent the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:122</div></div>
-<div class="ttc" id="afio_8h_html_a5b09a925834df62bb7128de317e7bacd"><div class="ttname"><a href="fio_8h.html#a5b09a925834df62bb7128de317e7bacd">f_close</a></div><div class="ttdeci">void f_close(f_io files)</div><div class="ttdef"><b>Definition:</b> fio.c:19</div></div>
-<div class="ttc" id="adatasets__paths_8c_html"><div class="ttname"><a href="datasets__paths_8c.html">datasets_paths.c</a></div></div>
-<div class="ttc" id="adatasets__paths_8c_html_a01d3bea5ae4fd50208298eb46759b47d"><div class="ttname"><a href="datasets__paths_8c.html#a01d3bea5ae4fd50208298eb46759b47d">mit_cmpr_samples_dir</a></div><div class="ttdeci">char const  * mit_cmpr_samples_dir[]</div><div class="ttdef"><b>Definition:</b> datasets_paths.c:122</div></div>
-<div class="ttc" id="adatasets__paths_8c_html_a9f5343611c3206994d7a312fd60c3736"><div class="ttname"><a href="datasets__paths_8c.html#a9f5343611c3206994d7a312fd60c3736">cmpr_samples_dir</a></div><div class="ttdeci">char const  * cmpr_samples_dir[]</div><div class="ttdef"><b>Definition:</b> datasets_paths.c:13</div></div>
-<div class="ttc" id="aaldc_8h_html_a00831b52ff8e853d09ee4f5f8c9f84a8"><div class="ttname"><a href="aldc_8h.html#a00831b52ff8e853d09ee4f5f8c9f84a8">padding</a></div><div class="ttdeci">void padding(outbuf *bufout)</div><div class="ttdoc">Finishes the compression process.</div><div class="ttdef"><b>Definition:</b> lectools.c:364</div></div>
-<div class="ttc" id="aaldc_8h_html_abb94a9c59e6215652246954dc77fa6d5"><div class="ttname"><a href="aldc_8h.html#abb94a9c59e6215652246954dc77fa6d5">cmp_buf_init</a></div><div class="ttdeci">void cmp_buf_init(void)</div><div class="ttdoc">Initializes the internal compression buffers and variables.</div><div class="ttdef"><b>Definition:</b> lectools.c:375</div></div>
-<div class="ttc" id="aaldc_8h_html"><div class="ttname"><a href="aldc_8h.html">aldc.h</a></div><div class="ttdoc">IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent...</div></div>
-<div class="ttc" id="afio_8h_html_ae5d43b2963be92f55f89b46136e77a78"><div class="ttname"><a href="fio_8h.html#ae5d43b2963be92f55f89b46136e77a78">f_open</a></div><div class="ttdeci">f_io f_open(f_io files, int16_t **)</div><div class="ttdoc">Open input and output files which are included in the typedef f_io files.</div><div class="ttdef"><b>Definition:</b> fio.c:6</div></div>
-<div class="ttc" id="afio_8c_html_a5b09a925834df62bb7128de317e7bacd"><div class="ttname"><a href="fio_8c.html#a5b09a925834df62bb7128de317e7bacd">f_close</a></div><div class="ttdeci">void f_close(f_io files)</div><div class="ttdef"><b>Definition:</b> fio.c:19</div></div>
-<div class="ttc" id="adatasets__paths_8c_html_ad358009d4a2dc51a5b0160e361562adc"><div class="ttname"><a href="datasets__paths_8c.html#ad358009d4a2dc51a5b0160e361562adc">samples_dir</a></div><div class="ttdeci">char const  * samples_dir[]</div><div class="ttdef"><b>Definition:</b> datasets_paths.c:3</div></div>
-<div class="ttc" id="astructf__io_html_a606ae00fa0b8a27e73f62403411f5162"><div class="ttname"><a href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">f_io::nsamples</a></div><div class="ttdeci">size_t nsamples</div><div class="ttdef"><b>Definition:</b> fio.h:13</div></div>
-<div class="ttc" id="aaldc__encoder_8c_html_a840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="aldc__encoder_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdef"><b>Definition:</b> aldc_encoder.c:10</div></div>
-<div class="ttc" id="astructoutbuf_html_a1f20916b8943617bb9800335512b1c6c"><div class="ttname"><a href="structoutbuf.html#a1f20916b8943617bb9800335512b1c6c">outbuf::ctr</a></div><div class="ttdeci">size_t ctr</div><div class="ttdoc">Counts the number of 32bit words that are writen to the buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:124</div></div>
-<div class="ttc" id="astructf__io_html_aca392a8d3941cd0740aef3ad92545d67"><div class="ttname"><a href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">f_io::in</a></div><div class="ttdeci">FILE * in</div><div class="ttdef"><b>Definition:</b> fio.h:9</div></div>
-<div class="ttc" id="astructf__io_html"><div class="ttname"><a href="structf__io.html">f_io</a></div><div class="ttdef"><b>Definition:</b> fio.h:8</div></div>
-<div class="ttc" id="astructf__io_html_a1277960b5f2b37137fe9b0b5a1ea0beb"><div class="ttname"><a href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">f_io::out</a></div><div class="ttdeci">FILE * out</div><div class="ttdef"><b>Definition:</b> fio.h:10</div></div>
-<div class="ttc" id="adatasets__paths_8c_html_a5d195d10b2c149ba056b62c1cf47873b"><div class="ttname"><a href="datasets__paths_8c.html#a5d195d10b2c149ba056b62c1cf47873b">mit_samples_dir</a></div><div class="ttdeci">char const  * mit_samples_dir[]</div><div class="ttdef"><b>Definition:</b> datasets_paths.c:24</div></div>
-<div class="ttc" id="afio_8h_html"><div class="ttname"><a href="fio_8h.html">fio.h</a></div></div>
-<div class="ttc" id="aaldc_8h_html_aa17084e08486e0927b047e51a98135e1"><div class="ttname"><a href="aldc_8h.html#aa17084e08486e0927b047e51a98135e1">aldc</a></div><div class="ttdeci">void aldc(outbuf *bufout, int16_t *difbuf, size_t difbuf_len)</div><div class="ttdoc">Encoding function that uses the predefined by the user compression method.</div><div class="ttdef"><b>Definition:</b> lectools.c:23</div></div>
+<div class="ttc" id="astructf__io_html_aece04f1a30496ad2beb7b0abe91f4a25"><div class="ttname"><a href="structf__io.html#aece04f1a30496ad2beb7b0abe91f4a25">f_io::out_id</a></div><div class="ttdeci">char const  * out_id</div><div class="ttdoc">ouput file</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00026">fio.h:26</a></div></div>
+<div class="ttc" id="astructf__io_html_ab213c91320a5c086d7287d5b70652366"><div class="ttname"><a href="structf__io.html#ab213c91320a5c086d7287d5b70652366">f_io::in_id</a></div><div class="ttdeci">char const  * in_id</div><div class="ttdoc">input file id</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00025">fio.h:25</a></div></div>
+<div class="ttc" id="afio_8h_html_a5b09a925834df62bb7128de317e7bacd"><div class="ttname"><a href="fio_8h.html#a5b09a925834df62bb7128de317e7bacd">f_close</a></div><div class="ttdeci">void f_close(f_io files)</div><div class="ttdef"><b>Definition:</b> <a href="fio_8c_source.html#l00027">fio.c:27</a></div></div>
+<div class="ttc" id="afio_8h_html_a038ce25bf27a03ad359c2f44f74ea54c"><div class="ttname"><a href="fio_8h.html#a038ce25bf27a03ad359c2f44f74ea54c">f_open</a></div><div class="ttdeci">f_io f_open(f_io files, int16_t **difbuf_adr)</div><div class="ttdoc">Opens input and output files which are included in the typedef f_io files.</div><div class="ttdef"><b>Definition:</b> <a href="fio_8c_source.html#l00014">fio.c:14</a></div></div>
+<div class="ttc" id="astructf__io_html_a606ae00fa0b8a27e73f62403411f5162"><div class="ttname"><a href="structf__io.html#a606ae00fa0b8a27e73f62403411f5162">f_io::nsamples</a></div><div class="ttdeci">size_t nsamples</div><div class="ttdoc">number of the 16-bit samples of the recording</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00027">fio.h:27</a></div></div>
+<div class="ttc" id="astructf__io_html_aca392a8d3941cd0740aef3ad92545d67"><div class="ttname"><a href="structf__io.html#aca392a8d3941cd0740aef3ad92545d67">f_io::in</a></div><div class="ttdeci">FILE * in</div><div class="ttdoc">pointer to an input recording</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00023">fio.h:23</a></div></div>
+<div class="ttc" id="astructf__io_html"><div class="ttname"><a href="structf__io.html">f_io</a></div><div class="ttdoc">f_io is a struct typedef that gathers all the FILE type associated parameteters</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00022">fio.h:22</a></div></div>
+<div class="ttc" id="astructf__io_html_a1277960b5f2b37137fe9b0b5a1ea0beb"><div class="ttname"><a href="structf__io.html#a1277960b5f2b37137fe9b0b5a1ea0beb">f_io::out</a></div><div class="ttdeci">FILE * out</div><div class="ttdoc">pointer to a compressed recording</div><div class="ttdef"><b>Definition:</b> <a href="fio_8h_source.html#l00024">fio.h:24</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

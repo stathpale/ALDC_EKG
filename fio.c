@@ -1,3 +1,11 @@
+/** @file fio.c
+ ** **author:** Palaiologos Efstathios
+ ** @brief File input and output hidden implementation
+ **
+ ** 
+ */
+
+
 #include "fio.h"
 #include "fio_func.h"
 

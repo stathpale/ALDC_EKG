@@ -1,7 +1,7 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/aldc.h" name="C:/sourcefiles/oee/2.ALDC_EKG/aldc.h">
-<area shape="rect" id="node1" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="109,5,254,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,95,80,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="105,95,170,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="195,95,256,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="280,95,344,121"/>
+<map id="aldc.h" name="aldc.h">
+<area shape="rect" id="node1" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="153,5,210,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,80,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="105,80,170,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="195,80,256,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="280,80,344,107"/>
 </map>

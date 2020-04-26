@@ -1,8 +1,8 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/lectools.h" name="C:/sourcefiles/oee/2.ALDC_EKG/lectools.h">
-<area shape="rect" id="node1" title=" " alt="" coords="98,5,265,47"/>
-<area shape="rect" id="node2" href="$aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="153,95,210,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,169,80,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="105,169,170,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="195,169,256,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="280,169,344,196"/>
+<map id="lectools.h" name="lectools.h">
+<area shape="rect" id="node1" title="Lossless entropy compression methods header." alt="" coords="142,5,221,32"/>
+<area shape="rect" id="node2" href="$aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="153,80,210,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="105,155,170,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="195,155,256,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="280,155,344,181"/>
 </map>

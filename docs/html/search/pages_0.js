@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['aldc_2ddr_5fekg_20_2f_20aldc_2ddr_20_2f_20alec_20_2f_20lec_20demo_127',['ALDC-DR_EKG / ALDC-DR / ALEC / LEC DEMO',['../index.html',1,'']]]
+  ['an_20adaptive_20lossless_20data_20compression_20algorithm_20optimised_20for_20ecgs_117',['An Adaptive Lossless Data Compression Algorithm Optimised for ECGs',['../index.html',1,'']]]
 ];

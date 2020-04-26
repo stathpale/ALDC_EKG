@@ -1,4 +1,4 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/fio_func.h" name="C:/sourcefiles/oee/2.ALDC_EKG/fio_func.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,171,47"/>
-<area shape="rect" id="node2" href="$fio_8c.html" title=" " alt="" coords="21,95,155,136"/>
+<map id="fio_func.h" name="fio_func.h">
+<area shape="rect" id="node1" title="File input and output header of internal functions." alt="" coords="5,5,83,32"/>
+<area shape="rect" id="node2" href="$fio_8c.html" title="File input and output hidden implementation." alt="" coords="21,80,67,107"/>
 </map>

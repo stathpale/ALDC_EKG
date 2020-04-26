@@ -1,4 +1,4 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/lectools.h" name="C:/sourcefiles/oee/2.ALDC_EKG/lectools.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,47"/>
-<area shape="rect" id="node2" href="$lectools_8c.html" title=" " alt="" coords="5,95,172,136"/>
+<map id="lectools.h" name="lectools.h">
+<area shape="rect" id="node1" title="Lossless entropy compression methods header." alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$lectools_8c.html" title="Lossless entropy compression methods implementation." alt="" coords="5,80,84,107"/>
 </map>

@@ -1,5 +1,5 @@
 /** @file aldc.h
- ** **author:** Palaiologos Efstathios
+ ** **author:** Palaiologos Efstathios  
  ** 
  ** @brief __IMPORTANT! READ THIS FIRST.__ The header aldc.h describes the compression interface
  ** and includes essential macros that must be defined properly before compilation. 
@@ -37,7 +37,7 @@
 
 #define __ALDC_H__ 
 #include <stdbool.h>        
-#include <stdint.h>          // usage of standart data types for prortability
+#include <stdint.h>          // usage of standard data types for prortability
 #include <stdio.h>           // for debugging 
 #include <stdlib.h>          // malloc and friends
 
@@ -63,7 +63,7 @@
 /// "__LEC__"  : NEAT STATIC LOSSLESS ENTROPY COMPRESSOR AS COMPRESSION METHOD
 ///////////////////////////////////////////////////////////////////////
 
-#define __ALDC_3_1__   ///< Hybrid ALEC 3 and LEC as compression method 
+//#define __ALDC_3_1__   ///< Hybrid ALEC 3 and LEC as compression method 
 //#define __ALDC_2_1__ ///< Hybrid ALEC 2 and LEC as compression method 
 //#define __ALDC_3_2__ ///< Hybrid ALEC 3 and ALEC 2 as compression method 
 //#define __ALEC_3__   ///< Neat ALEC 3 as compression method
@@ -141,9 +141,9 @@ void cmp_buf_init(void);
  **
  ** Compresses the contents of @a difbuf into @a bufout.
  ** __This function has memory__, it only writes whole 32bit words to bufout 
- ** and it remembers the the remnants of the compressed bit stream.  
+ ** and it remembers the remnants of the compressed bit stream.  
  ** eg : if the compressed bit stream of an  input buffer of 40 samples is 330 bits,
- ** then 10* 32-bit-words will be written to bufout and the rest 10 bits will be remembered.
+ ** then 10* 32-bit-words will be written to bufout and the rest 10 bits will be stored staticly.
  ** @param[in] diffbuf Pointer at the start of the input buffer. 
  ** Contents of this buffer must be the differences of each pair of two 
  ** sequential adc samples  

@@ -19,10 +19,6 @@ var searchData=
   ['aldc_2eh_18',['aldc.h',['../aldc_8h.html',1,'']]],
   ['aldc_5fencoder_2ec_19',['aldc_encoder.c',['../aldc__encoder_8c.html',1,'']]],
   ['aldc_5fwnd_20',['ALDC_WND',['../aldc_8h.html#aff538f3f47817fd64bdfa3f41e819f67',1,'aldc.h']]],
-  ['aldcop1_5fcd_21',['ALDCOP1_CD',['../aldc_8h.html#ac5a8ee7a7a1532105e5d577efa9d72f5',1,'aldc.h']]],
-  ['aldcop1_5fcd_5fln_22',['ALDCOP1_CD_LN',['../aldc_8h.html#a20fd1eb209c4d7e34ed15c15461270c3',1,'aldc.h']]],
-  ['aldcop2_5fcd_23',['ALDCOP2_CD',['../aldc_8h.html#ad5f66ed183889cfcf9f6fca4c5160862',1,'aldc.h']]],
-  ['aldcop2_5fcd_5fln_24',['ALDCOP2_CD_LN',['../aldc_8h.html#a9f15666c3b6549b3ce2b09ef048b0071',1,'aldc.h']]],
-  ['alec_5fwnd_25',['ALEC_WND',['../aldc_8h.html#ae1cf3a84b81ed40cc5a99afe71fdd2e0',1,'aldc.h']]],
-  ['aldc_2ddr_5fekg_20_2f_20aldc_2ddr_20_2f_20alec_20_2f_20lec_20demo_26',['ALDC-DR_EKG / ALDC-DR / ALEC / LEC DEMO',['../index.html',1,'']]]
+  ['alec_5fwnd_21',['ALEC_WND',['../aldc_8h.html#ae1cf3a84b81ed40cc5a99afe71fdd2e0',1,'aldc.h']]],
+  ['an_20adaptive_20lossless_20data_20compression_20algorithm_20optimised_20for_20ecgs_22',['An Adaptive Lossless Data Compression Algorithm Optimised for ECGs',['../index.html',1,'']]]
 ];

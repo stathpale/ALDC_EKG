@@ -1,10 +1,10 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/lectools.c" name="C:/sourcefiles/oee/2.ALDC_EKG/lectools.c">
-<area shape="rect" id="node1" title=" " alt="" coords="179,5,346,47"/>
-<area shape="rect" id="node2" href="$lectools_8h.html" title=" " alt="" coords="183,95,262,121"/>
-<area shape="rect" id="node8" href="$huftbl_8c.html" title=" " alt="" coords="276,169,340,196"/>
-<area shape="rect" id="node3" href="$aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="193,169,250,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,244,80,271"/>
-<area shape="rect" id="node5" title=" " alt="" coords="278,244,343,271"/>
-<area shape="rect" id="node6" title=" " alt="" coords="104,244,165,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="189,244,253,271"/>
+<map id="lectools.c" name="lectools.c">
+<area shape="rect" id="node1" title="Lossless entropy compression methods implementation." alt="" coords="223,5,302,32"/>
+<area shape="rect" id="node2" href="$lectools_8h.html" title="Lossless entropy compression methods header." alt="" coords="183,80,262,107"/>
+<area shape="rect" id="node8" href="$huftbl_8c.html" title="Static Huffman Tables." alt="" coords="276,155,340,181"/>
+<area shape="rect" id="node3" href="$aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="193,155,250,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="278,229,343,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="104,229,165,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="189,229,253,256"/>
 </map>

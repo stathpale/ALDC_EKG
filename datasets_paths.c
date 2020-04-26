@@ -1,5 +1,24 @@
-//input
+/** @file datasets_paths.c
+ ** **author:** Palaiologos Efstathios  
+ **
+ ** @brief Paths of the datasets.  
+ **
+ ** Defines two char const*[] objects, the first has the paths of the selected original
+ ** dataset(uncompressed) and the other has the paths the corresponding cocompressed dataset.
+ **
+ ** define exactly one of the macros __MIT_DATASET__ and __CUSTOM_DATASET___ 
+ */
 
+
+
+//#define __MIT_DATASET__ ///< Sets the paths of directories  for the compression of MIT Database
+#define __CUSTOM_DATASET__ ///< Sets the paths of directories for the compression of a CUSTOM Database 
+
+#ifdef __CUSTOM_DATASET__
+
+#define REC_FILES_NUM 8 ///< defines the number of the itterations that will be needed to compress the whole of the selected dataset
+/** Paths of the original uncompressed custom dataset
+*/
 char const* samples_dir[] = {"samples/ecgA04apnea.bin",
 	"samples/ecgB05apnea.bin",
 	"samples/ecgEkgMove.bin",
@@ -9,7 +28,8 @@ char const* samples_dir[] = {"samples/ecgA04apnea.bin",
 	"samples/orig_eegF4UoP.bin",
 	"samples/orig_eegOZUoP.bin" };
 
-//output
+/** Paths of the compressed custom dataset
+*/
 char const* cmpr_samples_dir[] ={"cmprsamples/C_ecgA04apnea.bin",
 	"cmprsamples/C_ecgB05apnea.bin",
 	"cmprsamples/C_ecgEkgMove.bin",
@@ -19,9 +39,16 @@ char const* cmpr_samples_dir[] ={"cmprsamples/C_ecgA04apnea.bin",
 	"cmprsamples/C_orig_eegF4UoP.bin",
 	"cmprsamples/C_orig_eegOZUoP.bin", };
 
+#endif /* __CUSTOM_DATASET__ */
 
-//apnea input
-char const* mit_samples_dir[] = {
+
+#ifdef __MIT_DATASET__
+
+
+#define REC_FILES_NUM 96 ///< defines the number of the itteration that will be needed to compress the whole of the selected dataset
+/** Paths of the original uncompressed MIT ARYTHMIA dataset
+*/
+char const* samples_dir[] = {
 	"mit/100m1.bin",
 	"mit/100m2.bin",
 	"mit/101m1.bin",
@@ -118,8 +145,9 @@ char const* mit_samples_dir[] = {
 	"mit/233m2.bin",
 	"mit/234m1.bin",
 	"mit/234m2.bin",};
-
-char const* mit_cmpr_samples_dir[] = {
+/** Paths of the compressed MIT ARYTHMIA dataset
+*/
+char const* cmpr_samples_dir[] = {
 	"cmpmit/100m1.bin",
 	"cmpmit/100m2.bin",
 	"cmpmit/101m1.bin",
@@ -216,3 +244,5 @@ char const* mit_cmpr_samples_dir[] = {
 	"cmpmit/233m2.bin",
 	"cmpmit/234m1.bin",
 	"cmpmit/234m2.bin",	};
+
+#endif /*__MIT_DATASET__*/

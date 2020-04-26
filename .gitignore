@@ -13,4 +13,7 @@ alekgc.sln
 alekgc.vcxproj
 alekgc.vcxproj.filters
 alekgc.vcxproj.user
-
+source/
+png/
+html/
+docs/readme.md

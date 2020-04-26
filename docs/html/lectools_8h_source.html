@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALDC_EKG: C:/sourcefiles/oee/2.ALDC_EKG/lectools.h Source File</title>
+<title>ALDC_EKG: lectools.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
-   <div id="projectbrief">Ultra Low Resource and Fast  Real-Time Compression Algorithm (optimised for Electrogardiograms )</div>
   </td>
  </tr>
  </tbody>
@@ -63,119 +62,85 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">C:/sourcefiles/oee/2.ALDC_EKG/lectools.h</div>  </div>
+<div class="title">lectools.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="lectools_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __LECTOOLS_H__</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#   define __LECTOOLS_H__</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#   include &quot;<a class="code" href="aldc_8h.html">aldc.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#   define BUFF_SIZE (ALEC_WND)</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">    8</a></span>&#160;<span class="preprocessor">#   define BCTRMX ((BUFF_SIZE)*32-1)</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="lectools_8h.html#a9b2f3ce6e962d6b57226a29568246034">    9</a></span>&#160; </div>
+<a href="lectools_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef __LECTOOLS_H__</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">   11</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">void</span> <a class="code" href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">compressor</a>(<a class="code" href="structoutbuf.html">outbuf</a>*, int16_t*, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define __LECTOOLS_H__</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structcmp__buf.html">   13</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">   14</a></span>&#160;        uint32_t <a class="code" href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">b_ctr</a>; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structcmp__buf.html#aed955690b8a7c9e396fc317d99c4de18">   15</a></span>&#160;        uint32_t data[<a class="code" href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">BUFF_SIZE</a>];</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }<a class="code" href="structcmp__buf.html">cmp_buf</a> ;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structt__buf.html">   18</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">   19</a></span>&#160;        uint32_t <a class="code" href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">b_ctr</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">   20</a></span>&#160;        uint32_t <a class="code" href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">data</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }<a class="code" href="structt__buf.html">t_buf</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// encoding par</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#   if defined(__ALDC__)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aldc_8h.html">aldc.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define BUFF_SIZE (ALEC_WND)                             </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">   16</a></span>&#160;<span class="preprocessor">#define BCTRMX (BUFF_SIZE*32-1)                          </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="lectools_8h.html#a9b2f3ce6e962d6b57226a29568246034">   17</a></span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">   19</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">void</span> <a class="code" href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">compressor</a>(<a class="code" href="structoutbuf.html">outbuf</a>*, int16_t*, <span class="keywordtype">bool</span>);    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structcmp__buf.html">   22</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">   23</a></span>&#160;        uint32_t <a class="code" href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">b_ctr</a>;                                  </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structcmp__buf.html#aed955690b8a7c9e396fc317d99c4de18">   24</a></span>&#160;        uint32_t data[<a class="code" href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">BUFF_SIZE</a>];                        </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }<a class="code" href="structcmp__buf.html">cmp_buf</a> ;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structt__buf.html">   28</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">   29</a></span>&#160;        uint32_t <a class="code" href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">b_ctr</a>;                                  </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">   30</a></span>&#160;        uint32_t <a class="code" href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">data</a>;                                   </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }<a class="code" href="structt__buf.html">t_buf</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> uint32_t get_buf_sum(int16_t* inbuf);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#   endif</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#if defined(__ALDC__)</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#   if defined(__ALDC_3_2__) || defined(__ALDC_3_1__) || defined(__ALEC_3__)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> alec3(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf,<span class="keywordtype">bool</span> ft );</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> al3_init(<span class="keywordtype">bool</span> first);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> uint32_t get_buf_sum(int16_t* inbuf);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* usage of get_buf_sum_*/</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#if defined(__ALDC_3_2__) || defined(__ALDC_3_1__) || defined(__ALEC_3__)</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#   if defined(__ALDC_3_2__) || defined(__ALDC_2_1__) || defined(__ALEC_2__)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> alec3(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf,<span class="keywordtype">bool</span> ft );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> al3_init(<span class="keywordtype">bool</span> first);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> alec2(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf, <span class="keywordtype">bool</span> ft);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> al2_init(<span class="keywordtype">bool</span> first);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*usage of alec3 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#if defined(__ALDC_3_2__) || defined(__ALDC_2_1__) || defined(__ALEC_2__)</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#   if defined(__ALDC_3_1__) || defined(__ALDC_2_1__) || defined(__LEC__)</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> alec2(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf, <span class="keywordtype">bool</span> ft);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> al2_init(<span class="keywordtype">bool</span> first);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> lec(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf, <span class="keywordtype">bool</span> ft );</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*usage of alec2 */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#   endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> lec_init(<span class="keywordtype">bool</span> first);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> encode_init(int16_t d, <span class="keywordtype">char</span> <span class="keyword">const</span> huf_opt, <a class="code" href="structcmp__buf.html">cmp_buf</a>* buf);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">static</span> uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> encode( <a class="code" href="structcmp__buf.html">cmp_buf</a>* buf, uint32_t len, uint16_t dta);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> uint32_t define_n(int16_t d);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> f_trsmt(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, <a class="code" href="structcmp__buf.html">cmp_buf</a> buf);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#if defined(__ALDC_3_1__) || defined(__ALDC_2_1__) || defined(__LEC__)</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> lec(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, int16_t* inbuf, <span class="keywordtype">bool</span> ft );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*usage of lec*/</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> lec_init(<span class="keywordtype">bool</span> first);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> encode_init(int16_t d, <span class="keywordtype">char</span> <span class="keyword">const</span> huf_opt, <a class="code" href="structcmp__buf.html">cmp_buf</a>* buf);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> uint16_t two2one_cmpl(int16_t dta, uint32_t dta_ordr);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> encode( <a class="code" href="structcmp__buf.html">cmp_buf</a>* buf, uint32_t len, uint16_t dta);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">static</span> uint32_t define_n(int16_t d);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> f_trsmt(<a class="code" href="structoutbuf.html">outbuf</a>* bufout, <a class="code" href="structcmp__buf.html">cmp_buf</a> buf);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aaldc_8h_html_abb1ccfff52a93b0275cef4aab7a3ff7f"><div class="ttname"><a href="aldc_8h.html#abb1ccfff52a93b0275cef4aab7a3ff7f">AL2OP2_CD_LN</a></div><div class="ttdeci">#define AL2OP2_CD_LN</div><div class="ttdoc">Unique's prefix code '0' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:97</div></div>
-<div class="ttc" id="ahuftbl_8c_html"><div class="ttname"><a href="huftbl_8c.html">huftbl.c</a></div></div>
-<div class="ttc" id="astructcmp__buf_html_a92a1bb04da9ea43da95b92fbe89a2490"><div class="ttname"><a href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">cmp_buf::b_ctr</a></div><div class="ttdeci">uint32_t b_ctr</div><div class="ttdef"><b>Definition:</b> lectools.h:14</div></div>
-<div class="ttc" id="astructt__buf_html_a92a1bb04da9ea43da95b92fbe89a2490"><div class="ttname"><a href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">t_buf::b_ctr</a></div><div class="ttdeci">uint32_t b_ctr</div><div class="ttdef"><b>Definition:</b> lectools.h:19</div></div>
-<div class="ttc" id="aaldc_8h_html_a204bd647e6fce8303e9fd1ae0fd2edcf"><div class="ttname"><a href="aldc_8h.html#a204bd647e6fce8303e9fd1ae0fd2edcf">AL3OP2_CD_LN</a></div><div class="ttdeci">#define AL3OP2_CD_LN</div><div class="ttdoc">Unique's prefix code '11' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:92</div></div>
-<div class="ttc" id="aaldc_8h_html_abccee01b7265e61c8a3d2db53211ec76"><div class="ttname"><a href="aldc_8h.html#abccee01b7265e61c8a3d2db53211ec76">AL3OP2_CD</a></div><div class="ttdeci">#define AL3OP2_CD</div><div class="ttdoc">The unique prefix code '11' expresses the compression with the second Huffman table of ALEC 3.</div><div class="ttdef"><b>Definition:</b> aldc.h:89</div></div>
-<div class="ttc" id="aaldc_8h_html_ac5a8ee7a7a1532105e5d577efa9d72f5"><div class="ttname"><a href="aldc_8h.html#ac5a8ee7a7a1532105e5d577efa9d72f5">ALDCOP1_CD</a></div><div class="ttdeci">#define ALDCOP1_CD</div><div class="ttdoc">The unique prefix code '0' expresses the compression with the first method (ALEC3,...</div><div class="ttdef"><b>Definition:</b> aldc.h:107</div></div>
-<div class="ttc" id="aaldc_8h_html_a9f15666c3b6549b3ce2b09ef048b0071"><div class="ttname"><a href="aldc_8h.html#a9f15666c3b6549b3ce2b09ef048b0071">ALDCOP2_CD_LN</a></div><div class="ttdeci">#define ALDCOP2_CD_LN</div><div class="ttdoc">Unique's prefix code size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:110</div></div>
-<div class="ttc" id="aaldc_8h_html_aee6e5824aa6948096ac1936d678ecfd8"><div class="ttname"><a href="aldc_8h.html#aee6e5824aa6948096ac1936d678ecfd8">AL3OP1_CD</a></div><div class="ttdeci">#define AL3OP1_CD</div><div class="ttdoc">The unique prefix code '10' expresses the compression with the first Huffman table of ALEC 3.</div><div class="ttdef"><b>Definition:</b> aldc.h:88</div></div>
-<div class="ttc" id="astructt__buf_html"><div class="ttname"><a href="structt__buf.html">t_buf</a></div><div class="ttdef"><b>Definition:</b> lectools.h:18</div></div>
-<div class="ttc" id="aaldc_8h_html_a5d28ac4e3bdf763e411a85531a43c669"><div class="ttname"><a href="aldc_8h.html#a5d28ac4e3bdf763e411a85531a43c669">AL2OP1_CD_LN</a></div><div class="ttdeci">#define AL2OP1_CD_LN</div><div class="ttdoc">Unique's prefix code '1' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:96</div></div>
-<div class="ttc" id="astructoutbuf_html_aa1cf91039f621340f15bcd4c95f582ef"><div class="ttname"><a href="structoutbuf.html#aa1cf91039f621340f15bcd4c95f582ef">outbuf::data</a></div><div class="ttdeci">uint32_t * data</div><div class="ttdoc">Is the starting address of the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:125</div></div>
-<div class="ttc" id="aaldc_8h_html_aff538f3f47817fd64bdfa3f41e819f67"><div class="ttname"><a href="aldc_8h.html#aff538f3f47817fd64bdfa3f41e819f67">ALDC_WND</a></div><div class="ttdeci">#define ALDC_WND</div><div class="ttdoc">SIZE OF THE ALDC WINDOW IN SAMPLES. (ALDC_WND % ALEC_WND) MUST ALAWAYS BE EQUAL TO 0.</div><div class="ttdef"><b>Definition:</b> aldc.h:75</div></div>
-<div class="ttc" id="aaldc_8h_html_ad8b1eab11d7a1f4c1fc7fc0da7650b0b"><div class="ttname"><a href="aldc_8h.html#ad8b1eab11d7a1f4c1fc7fc0da7650b0b">AL3OP3_CD_LN</a></div><div class="ttdeci">#define AL3OP3_CD_LN</div><div class="ttdoc">Unique's prefix code '0'size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:93</div></div>
-<div class="ttc" id="alectools_8c_html_abb94a9c59e6215652246954dc77fa6d5"><div class="ttname"><a href="lectools_8c.html#abb94a9c59e6215652246954dc77fa6d5">cmp_buf_init</a></div><div class="ttdeci">void cmp_buf_init(void)</div><div class="ttdoc">Initializes the internal compression buffers and variables.</div><div class="ttdef"><b>Definition:</b> lectools.c:375</div></div>
-<div class="ttc" id="astructoutbuf_html"><div class="ttname"><a href="structoutbuf.html">outbuf</a></div><div class="ttdoc">A structure to represent the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:122</div></div>
-<div class="ttc" id="alectools_8h_html_a6c7cd32e1bac137f05e4a752b4ad10af"><div class="ttname"><a href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">BUFF_SIZE</a></div><div class="ttdeci">#define BUFF_SIZE</div><div class="ttdef"><b>Definition:</b> lectools.h:7</div></div>
-<div class="ttc" id="aaldc_8h_html_ac7057f1f44fdf6a7ef6485ead2417695"><div class="ttname"><a href="aldc_8h.html#ac7057f1f44fdf6a7ef6485ead2417695">AL2OP1_CD</a></div><div class="ttdeci">#define AL2OP1_CD</div><div class="ttdoc">The unique prefix code '1' expresses the compression with the first Huffman table of ALEC 2.</div><div class="ttdef"><b>Definition:</b> aldc.h:94</div></div>
-<div class="ttc" id="astructcmp__buf_html"><div class="ttname"><a href="structcmp__buf.html">cmp_buf</a></div><div class="ttdef"><b>Definition:</b> lectools.h:13</div></div>
-<div class="ttc" id="aaldc_8h_html_a1c92b2bf4ad035ba22bc8c2b615e6857"><div class="ttname"><a href="aldc_8h.html#a1c92b2bf4ad035ba22bc8c2b615e6857">AL2OPT2</a></div><div class="ttdeci">#define AL2OPT2</div><div class="ttdoc">ALEC2's second Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:81</div></div>
-<div class="ttc" id="aaldc_8h_html_a491de6306b8801bb90f258f5f009386f"><div class="ttname"><a href="aldc_8h.html#a491de6306b8801bb90f258f5f009386f">AL2OPT1</a></div><div class="ttdeci">#define AL2OPT1</div><div class="ttdoc">ALEC2's first Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:80</div></div>
-<div class="ttc" id="aaldc_8h_html_a2a87ec68574fb6cda7c4ab8e1e134950"><div class="ttname"><a href="aldc_8h.html#a2a87ec68574fb6cda7c4ab8e1e134950">AL2OP2_CD</a></div><div class="ttdeci">#define AL2OP2_CD</div><div class="ttdoc">The unique prefix code '0' expresses the compression with the second Huffman table of ALEC 2.</div><div class="ttdef"><b>Definition:</b> aldc.h:95</div></div>
-<div class="ttc" id="aaldc_8h_html_aff6d1b4c2d076ef164d8dbc9e837f72a"><div class="ttname"><a href="aldc_8h.html#aff6d1b4c2d076ef164d8dbc9e837f72a">AL3OP1_CD_LN</a></div><div class="ttdeci">#define AL3OP1_CD_LN</div><div class="ttdoc">Unique's prefix code '10' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:91</div></div>
-<div class="ttc" id="aaldc_8h_html_ad5c525a069c49121ad32a24144a0ad51"><div class="ttname"><a href="aldc_8h.html#ad5c525a069c49121ad32a24144a0ad51">AL3OP3_CD</a></div><div class="ttdeci">#define AL3OP3_CD</div><div class="ttdoc">The unique prefix code '0' expresses the compression with the third Huffman table of ALEC 3.</div><div class="ttdef"><b>Definition:</b> aldc.h:90</div></div>
-<div class="ttc" id="astructcmp__buf_html_aed955690b8a7c9e396fc317d99c4de18"><div class="ttname"><a href="structcmp__buf.html#aed955690b8a7c9e396fc317d99c4de18">cmp_buf::data</a></div><div class="ttdeci">uint32_t data[BUFF_SIZE]</div><div class="ttdef"><b>Definition:</b> lectools.h:15</div></div>
+<div class="ttc" id="astructcmp__buf_html_a92a1bb04da9ea43da95b92fbe89a2490"><div class="ttname"><a href="structcmp__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">cmp_buf::b_ctr</a></div><div class="ttdeci">uint32_t b_ctr</div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00023">lectools.h:23</a></div></div>
+<div class="ttc" id="astructt__buf_html_a92a1bb04da9ea43da95b92fbe89a2490"><div class="ttname"><a href="structt__buf.html#a92a1bb04da9ea43da95b92fbe89a2490">t_buf::b_ctr</a></div><div class="ttdeci">uint32_t b_ctr</div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00029">lectools.h:29</a></div></div>
+<div class="ttc" id="astructt__buf_html"><div class="ttname"><a href="structt__buf.html">t_buf</a></div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00028">lectools.h:28</a></div></div>
+<div class="ttc" id="astructoutbuf_html"><div class="ttname"><a href="structoutbuf.html">outbuf</a></div><div class="ttdoc">A structure to represent the output buffer.</div><div class="ttdef"><b>Definition:</b> <a href="aldc_8h_source.html#l00122">aldc.h:122</a></div></div>
+<div class="ttc" id="alectools_8h_html_a6c7cd32e1bac137f05e4a752b4ad10af"><div class="ttname"><a href="lectools_8h.html#a6c7cd32e1bac137f05e4a752b4ad10af">BUFF_SIZE</a></div><div class="ttdeci">#define BUFF_SIZE</div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00016">lectools.h:15</a></div></div>
+<div class="ttc" id="astructcmp__buf_html"><div class="ttname"><a href="structcmp__buf.html">cmp_buf</a></div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00022">lectools.h:22</a></div></div>
 <div class="ttc" id="aaldc_8h_html"><div class="ttname"><a href="aldc_8h.html">aldc.h</a></div><div class="ttdoc">IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent...</div></div>
-<div class="ttc" id="aaldc_8h_html_a20fd1eb209c4d7e34ed15c15461270c3"><div class="ttname"><a href="aldc_8h.html#a20fd1eb209c4d7e34ed15c15461270c3">ALDCOP1_CD_LN</a></div><div class="ttdeci">#define ALDCOP1_CD_LN</div><div class="ttdoc">Unique's prefix code size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:109</div></div>
-<div class="ttc" id="aaldc_8h_html_aba8234f77a9747496eb0c0102cfe4c20"><div class="ttname"><a href="aldc_8h.html#aba8234f77a9747496eb0c0102cfe4c20">LECOPT</a></div><div class="ttdeci">#define LECOPT</div><div class="ttdoc">LEC's unique Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:79</div></div>
-<div class="ttc" id="alectools_8h_html_ae69125f80fdb774edfb7d5c9a7743986"><div class="ttname"><a href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">compressor</a></div><div class="ttdeci">void compressor(outbuf *, int16_t *, bool)</div><div class="ttdef"><b>Definition:</b> lectools.h:11</div></div>
-<div class="ttc" id="alectools_8h_html"><div class="ttname"><a href="lectools_8h.html">lectools.h</a></div></div>
-<div class="ttc" id="aaldc_8h_html_ac6a3256ac94e64c0cc3189a82e5a2fb9"><div class="ttname"><a href="aldc_8h.html#ac6a3256ac94e64c0cc3189a82e5a2fb9">AL3OPT2</a></div><div class="ttdeci">#define AL3OPT2</div><div class="ttdoc">ALEC3's second Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:83</div></div>
-<div class="ttc" id="aaldc_8h_html_a6322366f7e042e0fe700d1b3e25637be"><div class="ttname"><a href="aldc_8h.html#a6322366f7e042e0fe700d1b3e25637be">END_TRNM_CD1_LEN</a></div><div class="ttdeci">#define END_TRNM_CD1_LEN</div><div class="ttdoc">Unique's prefix code '1101' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:100</div></div>
-<div class="ttc" id="aaldc_8h_html_a50def055bf6b56f741b8b3c4f60d2a14"><div class="ttname"><a href="aldc_8h.html#a50def055bf6b56f741b8b3c4f60d2a14">END_TRNM_CD2_LEN</a></div><div class="ttdeci">#define END_TRNM_CD2_LEN</div><div class="ttdoc">Unique's prefix code '00000001' size in bits.</div><div class="ttdef"><b>Definition:</b> aldc.h:101</div></div>
-<div class="ttc" id="astructoutbuf_html_a1f20916b8943617bb9800335512b1c6c"><div class="ttname"><a href="structoutbuf.html#a1f20916b8943617bb9800335512b1c6c">outbuf::ctr</a></div><div class="ttdeci">size_t ctr</div><div class="ttdoc">Counts the number of 32bit words that are writen to the buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:124</div></div>
-<div class="ttc" id="alectools_8c_html_ae724e95f0ceea6192e5397c61f22da7b"><div class="ttname"><a href="lectools_8c.html#ae724e95f0ceea6192e5397c61f22da7b">aldc</a></div><div class="ttdeci">void aldc(outbuf *bufout, int16_t *inbuf, size_t inbuf_len)</div><div class="ttdoc">Encoding function that uses the predefined by the user compression method.</div><div class="ttdef"><b>Definition:</b> lectools.c:23</div></div>
-<div class="ttc" id="aaldc_8h_html_abf41327ed926554866a52474d7ab63ab"><div class="ttname"><a href="aldc_8h.html#abf41327ed926554866a52474d7ab63ab">AL3OPT1</a></div><div class="ttdeci">#define AL3OPT1</div><div class="ttdoc">ALEC3's first Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:82</div></div>
-<div class="ttc" id="astructt__buf_html_a1e43bf7d608e87228b625cca2c04d641"><div class="ttname"><a href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">t_buf::data</a></div><div class="ttdeci">uint32_t data</div><div class="ttdef"><b>Definition:</b> lectools.h:20</div></div>
-<div class="ttc" id="aaldc_8h_html_a6253b6652f81057eb58c1140e4d76e10"><div class="ttname"><a href="aldc_8h.html#a6253b6652f81057eb58c1140e4d76e10">END_TRNM_CD2</a></div><div class="ttdeci">#define END_TRNM_CD2</div><div class="ttdoc">Second part of the unique END OF TRANSIMISION prefix code that can be used when encoding with tables ...</div><div class="ttdef"><b>Definition:</b> aldc.h:99</div></div>
-<div class="ttc" id="aaldc_8h_html_ae1cf3a84b81ed40cc5a99afe71fdd2e0"><div class="ttname"><a href="aldc_8h.html#ae1cf3a84b81ed40cc5a99afe71fdd2e0">ALEC_WND</a></div><div class="ttdeci">#define ALEC_WND</div><div class="ttdoc">SIZE OF THE ALEC WINDOW IN SAMPLES. (ALDC_WND % ALEC_WND) MUST ALAWAYS BE EQUAL TO 0.</div><div class="ttdef"><b>Definition:</b> aldc.h:76</div></div>
-<div class="ttc" id="alectools_8h_html_a9b2f3ce6e962d6b57226a29568246034"><div class="ttname"><a href="lectools_8h.html#a9b2f3ce6e962d6b57226a29568246034">BCTRMX</a></div><div class="ttdeci">#define BCTRMX</div><div class="ttdef"><b>Definition:</b> lectools.h:8</div></div>
-<div class="ttc" id="aaldc_8h_html_aae41eef21c2b88b6f619d87fe258309c"><div class="ttname"><a href="aldc_8h.html#aae41eef21c2b88b6f619d87fe258309c">AL3OPT3</a></div><div class="ttdeci">#define AL3OPT3</div><div class="ttdoc">ALEC3's third Huffman table. Go to file huftlb.c to see the available tables.</div><div class="ttdef"><b>Definition:</b> aldc.h:84</div></div>
-<div class="ttc" id="alectools_8c_html_a00831b52ff8e853d09ee4f5f8c9f84a8"><div class="ttname"><a href="lectools_8c.html#a00831b52ff8e853d09ee4f5f8c9f84a8">padding</a></div><div class="ttdeci">void padding(outbuf *bufout)</div><div class="ttdoc">Finishes the compression process.</div><div class="ttdef"><b>Definition:</b> lectools.c:364</div></div>
-<div class="ttc" id="aaldc_8h_html_a80a55a713643d2146050dee90d8674a1"><div class="ttname"><a href="aldc_8h.html#a80a55a713643d2146050dee90d8674a1">__ALDC__</a></div><div class="ttdeci">#define __ALDC__</div><div class="ttdoc">States that the selected compression method belongs to the ALDC family.</div><div class="ttdef"><b>Definition:</b> aldc.h:105</div></div>
-<div class="ttc" id="aaldc_8h_html_a647d41da29f6383fcfc15611072e1be1"><div class="ttname"><a href="aldc_8h.html#a647d41da29f6383fcfc15611072e1be1">END_TRNM_CD1</a></div><div class="ttdeci">#define END_TRNM_CD1</div><div class="ttdoc">First part of the unique END OF TRANSIMISION prefix code that can be used when encoding with tables '...</div><div class="ttdef"><b>Definition:</b> aldc.h:98</div></div>
-<div class="ttc" id="aaldc_8h_html_ad5f66ed183889cfcf9f6fca4c5160862"><div class="ttname"><a href="aldc_8h.html#ad5f66ed183889cfcf9f6fca4c5160862">ALDCOP2_CD</a></div><div class="ttdeci">#define ALDCOP2_CD</div><div class="ttdoc">The unique prefix code '1' expresses the compression with the second method (ALEC3,...</div><div class="ttdef"><b>Definition:</b> aldc.h:108</div></div>
+<div class="ttc" id="alectools_8h_html_ae69125f80fdb774edfb7d5c9a7743986"><div class="ttname"><a href="lectools_8h.html#ae69125f80fdb774edfb7d5c9a7743986">compressor</a></div><div class="ttdeci">void compressor(outbuf *, int16_t *, bool)</div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00019">lectools.h:19</a></div></div>
+<div class="ttc" id="astructt__buf_html_a1e43bf7d608e87228b625cca2c04d641"><div class="ttname"><a href="structt__buf.html#a1e43bf7d608e87228b625cca2c04d641">t_buf::data</a></div><div class="ttdeci">uint32_t data</div><div class="ttdoc">Internal Usage.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8h_source.html#l00030">lectools.h:30</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

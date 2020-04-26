@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALDC_EKG: C:/sourcefiles/oee/2.ALDC_EKG/lectools.c File Reference</title>
+<title>ALDC_EKG: lectools.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
-   <div id="projectbrief">Ultra Low Resource and Fast  Real-Time Compression Algorithm (optimised for Electrogardiograms )</div>
   </td>
  </tr>
  </tbody>
@@ -65,27 +64,32 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">C:/sourcefiles/oee/2.ALDC_EKG/lectools.c File Reference</div>  </div>
+<div class="title">lectools.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Lossless entropy compression methods implementation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="lectools_8h_source.html">lectools.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="huftbl_8c.html">huftbl.c</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="huftbl_8c_source.html">huftbl.c</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for lectools.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="lectools_8c__incl.png" border="0" usemap="#_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2lectools_8c" alt=""/></div>
-<map name="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2lectools_8c" id="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2lectools_8c">
-<area shape="rect" title=" " alt="" coords="179,5,346,47"/>
-<area shape="rect" href="lectools_8h.html" title=" " alt="" coords="183,95,262,121"/>
-<area shape="rect" href="huftbl_8c.html" title=" " alt="" coords="276,169,340,196"/>
-<area shape="rect" href="aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="193,169,250,196"/>
-<area shape="rect" title=" " alt="" coords="5,244,80,271"/>
-<area shape="rect" title=" " alt="" coords="278,244,343,271"/>
-<area shape="rect" title=" " alt="" coords="104,244,165,271"/>
-<area shape="rect" title=" " alt="" coords="189,244,253,271"/>
+<div class="center"><img src="lectools_8c__incl.png" border="0" usemap="#lectools_8c" alt=""/></div>
+<map name="lectools_8c" id="lectools_8c">
+<area shape="rect" title="Lossless entropy compression methods implementation." alt="" coords="223,5,302,32"/>
+<area shape="rect" href="lectools_8h.html" title="Lossless entropy compression methods header." alt="" coords="183,80,262,107"/>
+<area shape="rect" href="huftbl_8c.html" title="Static Huffman Tables." alt="" coords="276,155,340,181"/>
+<area shape="rect" href="aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent..." alt="" coords="193,155,250,181"/>
+<area shape="rect" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" title=" " alt="" coords="278,229,343,256"/>
+<area shape="rect" title=" " alt="" coords="104,229,165,256"/>
+<area shape="rect" title=" " alt="" coords="189,229,253,256"/>
 </map>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="lectools_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae724e95f0ceea6192e5397c61f22da7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lectools_8c.html#ae724e95f0ceea6192e5397c61f22da7b">aldc</a> (<a class="el" href="structoutbuf.html">outbuf</a> *bufout, int16_t *inbuf, size_t inbuf_len)</td></tr>
@@ -99,7 +103,13 @@ Functions</h2></td></tr>
   <a href="lectools_8c.html#abb94a9c59e6215652246954dc77fa6d5">More...</a><br /></td></tr>
 <tr class="separator:abb94a9c59e6215652246954dc77fa6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Lossless entropy compression methods implementation. </p>
+<p><b>author:</b> Palaiologos Efstathios <br  />
+ It contains the hidden implementation of the available compression methods. </p>
+
+<p class="definition">Definition in file <a class="el" href="lectools_8c_source.html">lectools.c</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ae724e95f0ceea6192e5397c61f22da7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae724e95f0ceea6192e5397c61f22da7b">&#9670;&nbsp;</a></span>aldc()</h2>
 
@@ -133,8 +143,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Encoding function that uses the predefined by the user compression method. </p>
-<p>Compresses the contents of <em>difbuf</em> into <em>bufout</em>. <b>This function has memory</b>, it only writes whole 32bit words to bufout and it remembers the the remnants of the compressed bit stream. <br  />
- eg : if the compressed bit stream of an input buffer of 40 samples is 330 bits, then 10* 32-bit-words will be written to bufout and the rest 10 bits will be remembered. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Compresses the contents of <em>difbuf</em> into <em>bufout</em>. <b>This function has memory</b>, it only writes whole 32bit words to bufout and it remembers the remnants of the compressed bit stream. <br  />
+ eg : if the compressed bit stream of an input buffer of 40 samples is 330 bits, then 10* 32-bit-words will be written to bufout and the rest 10 bits will be stored staticly. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">diffbuf</td><td>Pointer at the start of the input buffer. Contents of this buffer must be the differences of each pair of two sequential adc samples <br  />
  eg: difbuf[i] = sample[i] - sample[i-1] , difbuf[i+1]= sample[i+1] - sample[i] etc. </td></tr>
@@ -143,6 +153,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="lectools_8c_source.html#l00038">38</a> of file <a class="el" href="lectools_8c_source.html">lectools.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -174,6 +186,8 @@ Here is the caller graph for this function:</div>
 <p>Initializes the internal compression buffers and variables. <br  />
  </p>
 <p>This function must be called before calling aldc for the first time for a new recording </p>
+
+<p class="definition">Definition at line <a class="el" href="lectools_8c_source.html#l00390">390</a> of file <a class="el" href="lectools_8c_source.html">lectools.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -204,6 +218,8 @@ Here is the caller graph for this function:</div>
 
 <p>Finishes the compression process. </p>
 <p>This function must be called after calling aldc for the last time. It appends the END OF TRANSMISSION CODE to the remnants of the compression stream and stores them to the output buffer </p>
+
+<p class="definition">Definition at line <a class="el" href="lectools_8c_source.html#l00379">379</a> of file <a class="el" href="lectools_8c_source.html">lectools.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

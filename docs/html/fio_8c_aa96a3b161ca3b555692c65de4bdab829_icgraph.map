@@ -1,4 +1,4 @@
 <map id="f_open" name="f_open">
-<area shape="rect" id="node1" title="Open input and output files which are included in the typedef f_io files." alt="" coords="104,5,164,32"/>
+<area shape="rect" id="node1" title="Opens input and output files which are included in the typedef f_io files." alt="" coords="104,5,164,32"/>
 <area shape="rect" id="node2" href="$aldc__encoder_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title=" " alt="" coords="5,5,56,32"/>
 </map>

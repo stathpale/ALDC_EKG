@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALDC_EKG: C:/sourcefiles/oee/2.ALDC_EKG/huftbl.c File Reference</title>
+<title>ALDC_EKG: huftbl.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
-   <div id="projectbrief">Ultra Low Resource and Fast  Real-Time Compression Algorithm (optimised for Electrogardiograms )</div>
   </td>
  </tr>
  </tbody>
@@ -63,28 +62,39 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">C:/sourcefiles/oee/2.ALDC_EKG/huftbl.c File Reference</div>  </div>
+<div class="title">huftbl.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Static Huffman Tables.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for huftbl.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="huftbl_8c__incl.png" border="0" usemap="#_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8c" alt=""/></div>
-<map name="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8c" id="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8c">
-<area shape="rect" title=" " alt="" coords="5,5,157,47"/>
-<area shape="rect" title=" " alt="" coords="49,95,114,121"/>
+<div class="center"><img src="huftbl_8c__incl.png" border="0" usemap="#huftbl_8c" alt=""/></div>
+<map name="huftbl_8c" id="huftbl_8c">
+<area shape="rect" title="Static Huffman Tables." alt="" coords="6,5,70,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,71,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="huftbl_8c__dep__incl.png" border="0" usemap="#_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8cdep" alt=""/></div>
-<map name="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8cdep" id="_c_1_2sourcefiles_2oee_22_8_a_l_d_c___e_k_g_2huftbl_8cdep">
-<area shape="rect" title=" " alt="" coords="13,5,165,47"/>
-<area shape="rect" href="lectools_8c.html" title=" " alt="" coords="5,95,172,136"/>
+<div class="center"><img src="huftbl_8c__dep__incl.png" border="0" usemap="#huftbl_8cdep" alt=""/></div>
+<map name="huftbl_8cdep" id="huftbl_8cdep">
+<area shape="rect" title="Static Huffman Tables." alt="" coords="13,5,77,32"/>
+<area shape="rect" href="lectools_8c.html" title="Lossless entropy compression methods implementation." alt="" coords="5,80,84,107"/>
 </map>
 </div>
+</div>
+<p><a href="huftbl_8c_source.html">Go to the source code of this file.</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Static Huffman Tables. </p>
+<p><b>author:</b> Palaiologos Efstathios</p>
+<p>This .c file contains two different sets of Huffman tables, each one with three discrete levels. The identifiers huf_tblx and huf_tblxb, stand for set a and b respectively, while x represents the level. For each Huffman table there is corresponding table that contains the length of the unique prefix code of each element. </p>
+
+<p class="definition">Definition in file <a class="el" href="huftbl_8c_source.html">huftbl.c</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

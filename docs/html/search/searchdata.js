@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "cfot",
   2: "adfhlr",
   3: "acfmp",
-  4: "bcdimnos",
+  4: "bcdinos",
   5: "c",
-  6: "_abel",
+  6: "_abelr",
   7: "a"
 };
 

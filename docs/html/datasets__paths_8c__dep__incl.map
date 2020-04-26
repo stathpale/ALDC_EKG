@@ -1,4 +1,4 @@
-<map id="C:/sourcefiles/oee/2.ALDC_EKG/datasets_paths.c" name="C:/sourcefiles/oee/2.ALDC_EKG/datasets_paths.c">
-<area shape="rect" id="node1" title=" " alt="" coords="25,5,185,61"/>
-<area shape="rect" id="node2" href="$aldc__encoder_8c.html" title=" " alt="" coords="5,109,204,151"/>
+<map id="datasets_paths.c" name="datasets_paths.c">
+<area shape="rect" id="node1" title="Paths of the datasets." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$aldc__encoder_8c.html" title="main function file" alt="" coords="11,80,122,107"/>
 </map>

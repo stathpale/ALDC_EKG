@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALDC_EKG: C:/sourcefiles/oee/2.ALDC_EKG/aldc.h Source File</title>
+<title>ALDC_EKG: aldc.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
-   <div id="projectbrief">Ultra Low Resource and Fast  Real-Time Compression Algorithm (optimised for Electrogardiograms )</div>
   </td>
  </tr>
  </tbody>
@@ -63,7 +62,7 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">C:/sourcefiles/oee/2.ALDC_EKG/aldc.h</div>  </div>
+<div class="title">aldc.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="aldc_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
@@ -71,18 +70,18 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define __ALDC_H__ </span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span>        </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>          <span class="comment">// usage of standart data types for prortability</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>          <span class="comment">// usage of standard data types for prortability</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span>           <span class="comment">// for debugging </span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span>          <span class="comment">// malloc and friends</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define __ALDC_3_1__   </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="aldc_8h.html#adf67b09fc87627aeb6b2d42c99347288">   67</a></span>&#160;<span class="preprocessor">//#define __ALDC_2_1__ </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">//#define __ALDC_3_2__ </span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">//#define __ALEC_3__   </span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">//#define __ALEC_2__   </span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">//#define __LEC__      </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">//#define __ALDC_3_1__   ///&lt; Hybrid ALEC 3 and LEC as compression method </span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//#define __ALDC_2_1__ ///&lt; Hybrid ALEC 2 and LEC as compression method </span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//#define __ALDC_3_2__ ///&lt; Hybrid ALEC 3 and ALEC 2 as compression method </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//#define __ALEC_3__   ///&lt; Neat ALEC 3 as compression method</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//#define __ALEC_2__   ///&lt; Neat ALEC 2 as compression method</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//#define __LEC__      ///&lt; Neat LEC as compression method</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define ALDC_WND 40 </span></div>
@@ -116,12 +115,12 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#if defined(__ALDC_3_2__) || defined(__ALDC_3_1__) || defined(__ALDC_2_1__)</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#define __ALDC__ </span></div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="aldc_8h.html#a80a55a713643d2146050dee90d8674a1">  106</a></span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor"></span> </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#define ALDCOP1_CD 0X0U   </span></div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="aldc_8h.html#ac5a8ee7a7a1532105e5d577efa9d72f5">  108</a></span>&#160;<span class="preprocessor">#define ALDCOP2_CD 0X1U   </span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="aldc_8h.html#ad5f66ed183889cfcf9f6fca4c5160862">  109</a></span>&#160;<span class="preprocessor">#define ALDCOP1_CD_LN 1U  </span></div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="aldc_8h.html#a20fd1eb209c4d7e34ed15c15461270c3">  110</a></span>&#160;<span class="preprocessor">#define ALDCOP2_CD_LN 1U  </span></div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="aldc_8h.html#a9f15666c3b6549b3ce2b09ef048b0071">  111</a></span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define ALDCOP2_CD 0X1U   </span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#define ALDCOP1_CD_LN 1U  </span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#define ALDCOP2_CD_LN 1U  </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor"></span> </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ALDC__ */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="structoutbuf.html">  122</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
@@ -142,12 +141,12 @@ $(function() {
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __ALDC_H__ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructoutbuf_html_aa1cf91039f621340f15bcd4c95f582ef"><div class="ttname"><a href="structoutbuf.html#aa1cf91039f621340f15bcd4c95f582ef">outbuf::data</a></div><div class="ttdeci">uint32_t * data</div><div class="ttdoc">Is the starting address of the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:125</div></div>
-<div class="ttc" id="astructoutbuf_html"><div class="ttname"><a href="structoutbuf.html">outbuf</a></div><div class="ttdoc">A structure to represent the output buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:122</div></div>
-<div class="ttc" id="aaldc_8h_html_a00831b52ff8e853d09ee4f5f8c9f84a8"><div class="ttname"><a href="aldc_8h.html#a00831b52ff8e853d09ee4f5f8c9f84a8">padding</a></div><div class="ttdeci">void padding(outbuf *bufout)</div><div class="ttdoc">Finishes the compression process.</div><div class="ttdef"><b>Definition:</b> lectools.c:364</div></div>
-<div class="ttc" id="aaldc_8h_html_abb94a9c59e6215652246954dc77fa6d5"><div class="ttname"><a href="aldc_8h.html#abb94a9c59e6215652246954dc77fa6d5">cmp_buf_init</a></div><div class="ttdeci">void cmp_buf_init(void)</div><div class="ttdoc">Initializes the internal compression buffers and variables.</div><div class="ttdef"><b>Definition:</b> lectools.c:375</div></div>
-<div class="ttc" id="astructoutbuf_html_a1f20916b8943617bb9800335512b1c6c"><div class="ttname"><a href="structoutbuf.html#a1f20916b8943617bb9800335512b1c6c">outbuf::ctr</a></div><div class="ttdeci">size_t ctr</div><div class="ttdoc">Counts the number of 32bit words that are writen to the buffer.</div><div class="ttdef"><b>Definition:</b> aldc.h:124</div></div>
-<div class="ttc" id="aaldc_8h_html_aa17084e08486e0927b047e51a98135e1"><div class="ttname"><a href="aldc_8h.html#aa17084e08486e0927b047e51a98135e1">aldc</a></div><div class="ttdeci">void aldc(outbuf *bufout, int16_t *difbuf, size_t difbuf_len)</div><div class="ttdoc">Encoding function that uses the predefined by the user compression method.</div><div class="ttdef"><b>Definition:</b> lectools.c:23</div></div>
+<div class="ttc" id="astructoutbuf_html_aa1cf91039f621340f15bcd4c95f582ef"><div class="ttname"><a href="structoutbuf.html#aa1cf91039f621340f15bcd4c95f582ef">outbuf::data</a></div><div class="ttdeci">uint32_t * data</div><div class="ttdoc">Is the starting address of the output buffer.</div><div class="ttdef"><b>Definition:</b> <a href="aldc_8h_source.html#l00125">aldc.h:125</a></div></div>
+<div class="ttc" id="astructoutbuf_html"><div class="ttname"><a href="structoutbuf.html">outbuf</a></div><div class="ttdoc">A structure to represent the output buffer.</div><div class="ttdef"><b>Definition:</b> <a href="aldc_8h_source.html#l00122">aldc.h:122</a></div></div>
+<div class="ttc" id="aaldc_8h_html_a00831b52ff8e853d09ee4f5f8c9f84a8"><div class="ttname"><a href="aldc_8h.html#a00831b52ff8e853d09ee4f5f8c9f84a8">padding</a></div><div class="ttdeci">void padding(outbuf *bufout)</div><div class="ttdoc">Finishes the compression process.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8c_source.html#l00379">lectools.c:379</a></div></div>
+<div class="ttc" id="aaldc_8h_html_abb94a9c59e6215652246954dc77fa6d5"><div class="ttname"><a href="aldc_8h.html#abb94a9c59e6215652246954dc77fa6d5">cmp_buf_init</a></div><div class="ttdeci">void cmp_buf_init(void)</div><div class="ttdoc">Initializes the internal compression buffers and variables.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8c_source.html#l00390">lectools.c:390</a></div></div>
+<div class="ttc" id="astructoutbuf_html_a1f20916b8943617bb9800335512b1c6c"><div class="ttname"><a href="structoutbuf.html#a1f20916b8943617bb9800335512b1c6c">outbuf::ctr</a></div><div class="ttdeci">size_t ctr</div><div class="ttdoc">Counts the number of 32bit words that are writen to the buffer.</div><div class="ttdef"><b>Definition:</b> <a href="aldc_8h_source.html#l00124">aldc.h:124</a></div></div>
+<div class="ttc" id="aaldc_8h_html_aa17084e08486e0927b047e51a98135e1"><div class="ttname"><a href="aldc_8h.html#aa17084e08486e0927b047e51a98135e1">aldc</a></div><div class="ttdeci">void aldc(outbuf *bufout, int16_t *difbuf, size_t difbuf_len)</div><div class="ttdoc">Encoding function that uses the predefined by the user compression method.</div><div class="ttdef"><b>Definition:</b> <a href="lectools_8c_source.html#l00038">lectools.c:38</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
