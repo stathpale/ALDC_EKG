@@ -10,7 +10,7 @@ Documentation page : https://stathpale.github.io/ALDC_EKG/html/index.html
 
 ## What is this repository about ?
 
-This C implementation of the ALDC-DR-EKG algorithm is part of an already completed and evaluated study and targets to demonstrate the benefits of the modifications that were applied to the basic ALDC-DR algorithm in order to improve its overall performance when compressing ECGs on the fly.
+This C implementation of the ALDC-DR-EKG algorithm is part of an already completed and evaluated research and targets to demonstrate the benefits of the modifications that were applied to the basic ALDC-DR algorithm in order to improve its overall performance when compressing ECGs on the fly.
 
 https://nemertes.lis.upatras.gr/jspui/handle/10889/12953
 
