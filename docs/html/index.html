@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="0.PNG"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ALDC_EKG
    </div>
@@ -66,7 +67,6 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><em><b>by Efstathios Palaiologos</b></em></p>
-<p><img src="./png/0.PNG" alt="1" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md0"></a>
 What is this repository about ?</h2>
 <p>This C implementation of the ALDC-DR-EKG algorithm is part of an already completed and evaluated study and targets to demonstrate the benefits of the modifications that were applied to the basic ALDC algorithm in order to improve its overall performance when compressing ECGs on the fly.</p>
@@ -153,15 +153,19 @@ What's  inside  this repo</h2>
 </ol>
 <h2><a class="anchor" id="autotoc_md5"></a>
 How to get Started</h2>
-<p>Clone the directory into your system ( you may ignore the docs folder)</p>
 <ol type="1">
-<li>Read the documentation page <a href="https://stathpale.github.io/ALDC_EKG/html/index.html">https://stathpale.github.io/ALDC_EKG/html/index.html</a> to see the available compilation options</li>
-<li>Compile on linux :<ul>
+<li><p class="startli">Clone the directory into your system ( you may ignore the docs folder)</p>
+<p class="startli"><a href="https://github.com/stathpale/ALDC_EKG.git">https://github.com/stathpale/ALDC_EKG.git</a></p>
+</li>
+<li>Read the documentations page <b><a class="el" href="aldc_8h.html" title="IMPORTANT! READ THIS FIRST. The header aldc.h describes the compression interface and includes essent...">aldc.h</a></b> to see the available compilation options</li>
+<li>Compile on linux :</li>
+</ol>
+<ul>
 <li>clang -O3 -Wall -std=c99 -o alekgc-dr <a class="el" href="aldc__encoder_8c.html" title="main function file">aldc_encoder.c</a> <a class="el" href="lectools_8c.html" title="Lossless entropy compression methods implementation.">lectools.c</a> <a class="el" href="fio_8c.html" title="File input and output hidden implementation.">fio.c</a> -D __ALDC_3_1__ &amp;&amp; ./alekgc-dr <br  />
 </li>
 <li>gcc -O3 -Wall -std=c99 -o alekgc-dr <a class="el" href="aldc__encoder_8c.html" title="main function file">aldc_encoder.c</a> <a class="el" href="lectools_8c.html" title="Lossless entropy compression methods implementation.">lectools.c</a> <a class="el" href="fio_8c.html" title="File input and output hidden implementation.">fio.c</a> -D __ALDC_3_1__ &amp;&amp; ./alekgc-dr</li>
 </ul>
-</li>
+<ol type="1">
 <li>Compile on Windows either with clang or with VS</li>
 </ol>
 <p>If you would like to give it a go contact me for the decoder at <a href="#" onclick="location.href='mai'+'lto:'+'sta'+'th'+'pal'+'e@'+'gma'+'il'+'.co'+'m'; return false;">stath<span style="display: none;">.nosp@m.</span>pale<span style="display: none;">.nosp@m.</span>@gmai<span style="display: none;">.nosp@m.</span>l.co<span style="display: none;">.nosp@m.</span>m</a></p>
