@@ -1,6 +1,6 @@
 # An Adaptive Lossless Data Compression Algorithm Optimised for ECGs
 
- https://stathpale.github.io/ALDC_EKG/html/index.html
+Documentation page : https://stathpale.github.io/ALDC_EKG/html/index.html
 
 ![1](./docs/html/png/0.PNG)
 
